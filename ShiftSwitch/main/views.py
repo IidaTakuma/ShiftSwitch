@@ -10,20 +10,24 @@ class CalendarView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["weekends"] = self.get_weekends
+        context["weekends_thismonth"] = self.get_weekends_month(0)
+        context["weekends_nextmonth"] = self.get_weekends_month(1)
         return context
     
-    def get_weekends(self):
+    def get_weekends_month(self,flag):
         this_month = date.today()
-
-        end_day = (date(this_month.year, this_month.month+1, 1) - timedelta(days=1)).day
+        month = this_month.month + flag
+        end_day = (date(this_month.year, month+1, 1) - timedelta(days=1)).day
 
         weekend = []
         for day in range(1,int(end_day)+1):
-            d = date(this_month.year, this_month.month, day)
+            d = date(this_month.year, month, day)
             if d.weekday()==5:
-                weekend.append((day,"Sat"))
+
+                weekend.append((month,day,"Sat"))
             elif d.weekday()==6:
-                weekend.append((day,"Sun"))
+                weekend.append((month,day,"Sun"))
         
         return weekend
+
+    
