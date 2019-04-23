@@ -1,1 +1,7 @@
 <h2>{{month}}月{{day}}日{{week}}</h2>
+
+<a href="#">追加する</a>
+
+{% for absence in absence_list %}
+    {{absence.Absence_user.username}}
+{% endfor %}

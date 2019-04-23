@@ -16,17 +16,24 @@ class CalendarView(TemplateView):
     
     def get_weekends_month(self,flag):
         this_month = date.today()
+        year = this_month.year
         month = this_month.month + flag
-        end_day = (date(this_month.year, month+1, 1) - timedelta(days=1)).day
+        if month == 12:
+            end_day = 31
+        elif month == 13:
+            year = year + 1
+            month = 12
+            end_day = 31
+        else:
+            end_day = (date(year, month+1, 1) - timedelta(days=1)).day
 
         weekend = []
         for day in range(1,int(end_day)+1):
-            d = date(this_month.year, month, day)
+            d = date(year, month, day)
             if d.weekday()==5:
-
-                weekend.append((month,day,"Sat"))
+                weekend.append((year,month,day,"Sat"))
             elif d.weekday()==6:
-                weekend.append((month,day,"Sun"))
+                weekend.append((year,month,day,"Sun"))
         
         return weekend
 

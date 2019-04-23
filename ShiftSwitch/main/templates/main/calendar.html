@@ -6,9 +6,9 @@
 {% endif %}
 <a href="#">ログアウト</a><br>
 
-{% comment %} weekend:(月,日,曜日) {% endcomment %}
+{% comment %} weekend:(年,月,日,曜日) {% endcomment %}
 {% for day in weekends_thismonth %}
-    <a href="{% url 'main:daily' %}?m={{day.0}}&d={{day.1}}&w={{day.2}}">{{day.0}}/{{day.1}} {{day.2}}</a><br>
+    <a href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}</a><br>
 {% endfor %}
 
 {% for day in weekends_nextmonth %}
