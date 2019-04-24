@@ -15,6 +15,14 @@
         </div>
     </div>
 </nav>
+{% comment %} [hidaka]switch month {% endcomment %}
+<p class="tabs col-sm-6 container-fluid">
+  <input style="display:none;" id="this_month" type="radio" name="tab_item" checked>
+  <label class="tab_item col-sm-6 mr-0" for="this_month">今月</label>
+  <input style="display:none;" id="next_month" type="radio" name="tab_item">
+  <label class="tab_item col-sm-5 ml-0" for="next_month">来月</label>
+</p>
+{% comment %} [hidaka]end switch month {% endcomment %}
 
 {% comment %} weekend:(年,月,日,曜日) {% endcomment %}
 <div class="list-group">
@@ -26,4 +34,10 @@
 {% comment %} {% for day in weekends_nextmonth %}
     <a href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}</a><br>
 {% endfor %} {% endcomment %}
+
+{% comment %} [hidaka]inline style {% endcomment %}
+<style>
+</style>
+{% comment %} [hidaka]end inline style {% endcomment %}
+
 {% endblock %}
