@@ -35,9 +35,11 @@
     <a href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}</a><br>
 {% endfor %} {% endcomment %}
 
-{% comment %} [hidaka]inline style {% endcomment %}
+{% comment %} [hidaka]inline style and script {% endcomment %}
 <style>
 </style>
-{% comment %} [hidaka]end inline style {% endcomment %}
+<script>
+</script>
+{% comment %} [hidaka]end inline style and script {% endcomment %}
 
 {% endblock %}
