@@ -1,10 +1,36 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<h2>{{month}}月{{day}}日{{week}}</h2>
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar nabvar-expand-lg navbar-light bg-light">
+    <h2 class="navbar-brand">{{month}}月{{day}}日{{week}}</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav">
+            <a href="#">{{user}}</a>
+            {% if user.is_staff %}
+            <a href="#">管理者画面</a>
+            {% endif %}
+            <a href="#">ログアウト</a><br>
+        </div>
+    </div>
+</nav>
 
-<a href="#">追加する</a>
+<div class="list-group">
+    <a class="list-group-item" href="#">追加する</a>
 
-{% for absence in absence_list %}
-    <p>{{absence.Absence_user.username}}</p>
-{% endfor %}
+    {% for absence in absence_list %}
+        <p class="list-group-item">
+        <span class="col-sm-8">{{absence.Absence_user.username}}</span>
+        <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
+        <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+        <span><button type="button" class="btn btn-success">代わる</button></span>
+        </p>
+        {% comment %} <form action="#">
+            {% csrf_token %}
+            <input type="submit" name=result value="代わる！">
+        <form> {% endcomment %}
+    {% endfor %}
+    </div>
+{% endblock %}
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

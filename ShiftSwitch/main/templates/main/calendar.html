@@ -1,20 +1,29 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<h2>勤怠管理システム</h2>
-
-<a href="#">{{user}}</a>
-{% if user.is_staff %}
-    <a href="#">管理者画面</a>
-{% endif %}
-<a href="#">ログアウト</a><br>
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar nabvar-expand-lg navbar-light bg-light">
+    <h2 class="navbar-brand">勤怠管理システム</h2>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav">
+            <a href="#">{{user}}</a>
+            {% if user.is_staff %}
+            <a href="#">管理者画面</a>
+            {% endif %}
+            <a href="#">ログアウト</a><br>
+        </div>
+    </div>
+</nav>
 
 {% comment %} weekend:(年,月,日,曜日) {% endcomment %}
+<div class="list-group">
 {% for day in weekends_thismonth %}
-    <a href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}</a><br>
+    <a class="list-group-item" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}</a>
 {% endfor %}
+</div>
 
-{% for day in weekends_nextmonth %}
+{% comment %} {% for day in weekends_nextmonth %}
     <a href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}</a><br>
-{% endfor %}
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endfor %} {% endcomment %}
+{% endblock %}
