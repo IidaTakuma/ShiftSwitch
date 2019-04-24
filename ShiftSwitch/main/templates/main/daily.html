@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 <nav class="navbar nabvar-expand-lg navbar-light bg-light">
-    <h2 class="navbar-brand">{{month}}月{{day}}日{{week}}</h2>
+    <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
+        {{month}}月{{day}}日{{week}}</h2>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,16 +22,17 @@
 
     {% for absence in absence_list %}
         <p class="list-group-item">
-        <span class="col-sm-8">{{absence.Absence_user.username}}</span>
-        <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
-        <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
-        <span><button type="button" class="btn btn-success">代わる</button></span>
+            <span class="col-sm-8">{{absence.Absence_user.username}}</span>
+            <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
+            <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+            <form action={% url 'main:addalternative' absence.id %} method="post">
+                {% csrf_token %}
+                <input type="submit" value="代わる！">
+            </form>
         </p>
-        {% comment %} <form action="#">
-            {% csrf_token %}
-            <input type="submit" name=result value="代わる！">
-        <form> {% endcomment %}
     {% endfor %}
     </div>
 {% endblock %}
+
+{% comment %} <span><button type="button" class="btn btn-success" onclick="location.href="{% url 'main:addalternative' absence.id %}"">代わる</button></span> {% endcomment %}
 

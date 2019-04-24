@@ -23,5 +23,3 @@ class DailyView(TemplateView):
         context['absence_list'] = Absence.objects.filter(date = _date)
 
         return context
-
-    
