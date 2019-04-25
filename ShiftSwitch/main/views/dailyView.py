@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from main.models import Absence
+from main.models import Absence, Alternative
 
 # Create your views here.
 
@@ -22,5 +22,6 @@ class DailyView(TemplateView):
 
         _date = str(year) + "-" + str(month) + "-" + str(day)
         context['absence_list'] = Absence.objects.filter(date = _date)
+        context['alternative_list'] = Alternative.objects.filter(date = _date)
 
         return context

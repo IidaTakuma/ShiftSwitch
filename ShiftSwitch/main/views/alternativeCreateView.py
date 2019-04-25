@@ -1,14 +1,12 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView
-from main.models import Absence
-from main.forms.createForm import AbsenceCreateForm
+from main.models import Alternative
+from main.forms.createForm import AlternativeCreateForm
 
-class AbsenceCreateView(CreateView):
-    model = Absence
-    template_name = "main/absenceCreate.html"
-    form_class = AbsenceCreateForm
-
-    # fields = ("shift_zone", "comment",)
+class AlternativeCreateView(CreateView):
+    model = Alternative
+    template_name = "main/alternativeCreate.html"
+    form_class = AlternativeCreateForm
 
     def get_date(self):
         year = self.request.GET.get('y')
@@ -34,11 +32,11 @@ class AbsenceCreateView(CreateView):
         _shift_zone = request.POST['shift_zone']
         _comment = request.POST['comment']
         
-        absence = Absence()
-        absence.shift_zone = _shift_zone
-        absence.comment = _comment
-        absence.Absence_user = request.user
-        absence.date = self.get_date()
-        absence.save()
+        alternative = Alternative()
+        alternative.shift_zone = _shift_zone
+        alternative.comment = _comment
+        alternative.Alternative_user = request.user
+        alternative.date = self.get_date()
+        alternative.save()
 
         return redirect(to = '/')
