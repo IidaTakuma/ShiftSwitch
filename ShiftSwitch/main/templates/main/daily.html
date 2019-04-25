@@ -26,34 +26,36 @@
   </li>
 </ul>
 
-<div class="list-group">
+<div class="tab-content">
+    <div id="absence" class="tab-pane list-group active">
+        <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する(欠席)</a>
+        {% for absence in absence_list %}
+            <p class="list-group-item">
+                <span class="col-sm-8">{{absence.Absence_user.username}}</span>
+                <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
+                <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                <form action={% url 'main:absenceChange' absence.id %} method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="代わる！">
+                </form>
+            </p>
+        {% endfor %}
+    </div>
 
-    <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する(欠席)</a>
-
-    {% for absence in absence_list %}
-        <p class="list-group-item">
-            <span class="col-sm-8">{{absence.Absence_user.username}}</span>
-            <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
-            <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
-            <form action={% url 'main:absenceChange' absence.id %} method="post">
-                {% csrf_token %}
-                <input type="submit" value="代わる！">
-            </form>
-        </p>
-    {% endfor %}
-
-    <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する(出席)</a>
-    {% for alternative in alternative_list %}
-        <p class="list-group-item">
-            <span class="col-sm-8">{{alternative.Alternative_user.username}}</span>
-            <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
-            <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
-            <form action={% url 'main:alternativeChange' alternative.id %} method="post">
-                {% csrf_token %}
-                <input type="submit" value="代わる！">
-            </form>
-        </p>
-    {% endfor %}
+    <div id="alternative" class="tab-pane list-group">
+        <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する(出席)</a>
+        {% for alternative in alternative_list %}
+            <p class="list-group-item">
+                <span class="col-sm-8">{{alternative.Alternative_user.username}}</span>
+                <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
+                <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                <form action={% url 'main:alternativeChange' alternative.id %} method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="代わる！">
+                </form>
+            </p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 
