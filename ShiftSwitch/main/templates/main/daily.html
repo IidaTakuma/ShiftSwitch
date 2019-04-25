@@ -18,7 +18,7 @@
 </nav>
 
 <div class="list-group">
-    <a class="list-group-item" href="#">追加する</a>
+    <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する</a>
 
     {% for absence in absence_list %}
         <p class="list-group-item">

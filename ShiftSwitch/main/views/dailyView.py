@@ -15,6 +15,7 @@ class DailyView(TemplateView):
         day = self.request.GET.get('d')
         week = self.request.GET.get('w')
 
+        context["year"] = year
         context["month"] = month
         context["day"] = day
         context["week"] = week

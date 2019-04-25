@@ -6,4 +6,5 @@ class Absence(models.Model):
     Alternative_user = models.IntegerField(verbose_name="代わりに入る人", default=-1)
     date = models.DateField()
     shift_zone = models.CharField(max_length=15)
+    comment = models.TextField(max_length=200, default="なし")
     is_settled = models.BooleanField(default=False)
