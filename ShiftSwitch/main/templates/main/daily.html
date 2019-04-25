@@ -28,7 +28,10 @@
 
 <div class="tab-content">
     <div id="absence" class="tab-pane list-group active">
-        <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する(欠席)</a>
+        <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
+            <span>追加する(欠席)</span>
+            <span>+</span>
+        </a>
         {% for absence in absence_list %}
             <p class="list-group-item">
                 <span class="col-sm-8">{{absence.Absence_user.username}}</span>
@@ -43,7 +46,10 @@
     </div>
 
     <div id="alternative" class="tab-pane list-group">
-        <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">追加する(出席)</a>
+        <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
+            <span>追加する(出席)</span>
+            <span>+</span>
+        </a>
         {% for alternative in alternative_list %}
             <p class="list-group-item">
                 <span class="col-sm-8">{{alternative.Alternative_user.username}}</span>
