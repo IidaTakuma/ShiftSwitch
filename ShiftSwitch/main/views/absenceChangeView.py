@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect
 from django.views.generic import View,DetailView
 from main.models import Absence
 
-class AddAlternativeView(View):
+class AbsenceChangeView(View):
     model = Absence
-    template_name = "main/addalternative"
+    template_name = "main/absenceChange.html"
 
     def get(self, request, *args, **kwargs):
         error_msg = "postしてください"

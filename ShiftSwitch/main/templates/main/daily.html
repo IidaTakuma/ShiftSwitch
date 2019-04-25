@@ -25,7 +25,7 @@
             <span class="col-sm-8">{{absence.Absence_user.username}}</span>
             <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
             <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
-            <form action={% url 'main:addalternative' absence.id %} method="post">
+            <form action={% url 'main:absenceChange' absence.id %} method="post">
                 {% csrf_token %}
                 <input type="submit" value="代わる！">
             </form>
