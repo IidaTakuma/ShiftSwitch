@@ -11,4 +11,5 @@ urlpatterns = [
     path('absence/change/<int:pk>/',views.AbsenceChangeView.as_view(), name="absenceChange"),
     path('alternative/create/',views.AlternativeCreateView.as_view(), name="alternativeCreate"),
     path('alternative/change/<int:pk>/',views.AlternativeChangeView.as_view(), name="alternativeChange"),
+    path('mypage/',views.MyPageView.as_view(), name="mypage")
 ]

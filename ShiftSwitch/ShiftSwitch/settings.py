@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -127,3 +128,6 @@ STATICFILES_DIRS = [
 
 
 AUTH_USER_MODEL = 'users.User'
+
+LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'

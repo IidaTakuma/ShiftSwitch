@@ -12,7 +12,7 @@
             {% if user.is_staff %}
             <a href="#">管理者画面</a>
             {% endif %}
-            <a href="#">ログアウト</a><br>
+            <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
         </div>
     </div>
 </nav>

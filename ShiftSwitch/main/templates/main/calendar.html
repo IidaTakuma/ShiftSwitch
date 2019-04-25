@@ -7,11 +7,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="navbar-nav">
-            <a href="#">{{user}}</a>
+            <a href="{% url 'main:mypage' %}">{{user}}</a>
             {% if user.is_staff %}
             <a href="#">管理者画面</a>
             {% endif %}
-            <a href="#">ログアウト</a><br>
+            <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
         </div>
     </div>
 </nav>
