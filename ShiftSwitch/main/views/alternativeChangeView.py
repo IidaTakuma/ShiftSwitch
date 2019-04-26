@@ -13,5 +13,6 @@ class AlternativeChangeView(View):
     def post(self, request, *args, **kwargs):
         alternative = Alternative.objects.get(id = kwargs['pk'])
         alternative.Absence_user = request.user.id
+        alternative.is_settled = True
         alternative.save()
         return redirect('main:calender')

@@ -1,20 +1,8 @@
 {% extends 'base.html' %}
+{% block pagetitle %}
+  <h2 class="navbar-brand">勤怠管理システム</h2>
+{% endblock %}
 {% block content %}
-<nav class="navbar nabvar-expand-lg navbar-light bg-light">
-    <h2 class="navbar-brand">勤怠管理システム</h2>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav">
-            <a href="{% url 'main:mypage' %}">{{user}}</a>
-            {% if user.is_staff %}
-            <a href="#">管理者画面</a>
-            {% endif %}
-            <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
-        </div>
-    </div>
-</nav>
 {% comment %} [hidaka]switch month {% endcomment %}
 <ul class="nav nav-tabs mx-auto col-sm-2">
   <li class="nav-item">

@@ -1,22 +1,9 @@
 {% extends 'base.html' %}
-{% block content %}
-<nav class="navbar nabvar-expand-lg navbar-light bg-light">
-    <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
+{% block pagetitle %}
+        <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
         {{month}}月{{day}}日{{week}}</h2>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav">
-            <a href="#">{{user}}</a>
-            {% if user.is_staff %}
-            <a href="#">管理者画面</a>
-            {% endif %}
-            <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
-        </div>
-    </div>
-</nav>
-
+{% endblock %}
+{% block content %}
 <ul class="nav nav-tabs mx-auto col-sm-2">
   <li class="nav-item">
     <a href="#absence" class="nav-link active" data-toggle="tab">代わって欲しい</a>
@@ -37,10 +24,14 @@
                 <span class="col-sm-8">{{absence.Absence_user.username}}</span>
                 <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
                 <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                {% if absence.is_settled %}
+                    <span><button type="button" class="btn btn-success" > 解決済！</button></span>
+                {% else %}    
                 <form action={% url 'main:absenceChange' absence.id %} method="post">
                     {% csrf_token %}
                     <input type="submit" value="代わる！">
                 </form>
+                {% endif %}
             </p>
         {% endfor %}
     </div>
@@ -55,10 +46,14 @@
                 <span class="col-sm-8">{{alternative.Alternative_user.username}}</span>
                 <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
                 <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                {% if alternative.is_settled %}
+                    <span><button type="button" class="btn btn-success" > 解決済！</button></span>
+                {% else %}
                 <form action={% url 'main:alternativeChange' alternative.id %} method="post">
                     {% csrf_token %}
                     <input type="submit" value="代わる！">
                 </form>
+                {% endif %}
             </p>
         {% endfor %}
     </div>
