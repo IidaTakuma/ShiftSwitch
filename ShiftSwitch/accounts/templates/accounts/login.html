@@ -1,6 +1,12 @@
- <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary btn-block">Log in</button>
-</form>
-<a href="{% url 'accounts:signup' %}">サインアップ</a>
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <h2>ログイン</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% include 'includes/form.html' %}
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+        </form>
+        <a href="{% url 'accounts:signup' %}">サインアップ</a>
+    </div>
+{% endblock %}
