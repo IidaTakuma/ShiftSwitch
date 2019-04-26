@@ -20,7 +20,7 @@
           <div class="navbar-nav">
               <a href="{% url 'main:mypage' %}">{{user}}</a>
               {% if user.is_staff %}
-              <a href="#">管理者画面</a>
+              <a href="{% url 'main:managerCalender' %}">管理者画面</a>
               {% endif %}
               <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
           </div>

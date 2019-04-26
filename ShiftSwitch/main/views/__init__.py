@@ -4,4 +4,5 @@ from .absenceCreateView import *
 from .absenceChangeView import *
 from .alternativeCreateView import *
 from .alternativeChangeView import *
-from .mypage import *
+from .mypageView import *
+from .managerCalenderView import *
