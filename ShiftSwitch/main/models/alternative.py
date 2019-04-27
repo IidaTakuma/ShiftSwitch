@@ -8,3 +8,7 @@ class Alternative(models.Model):
     shift_zone = models.CharField(max_length=15)
     comment = models.TextField(max_length=200, default="なし")
     is_settled = models.BooleanField(default=False)
+
+    def get_user_from_id(self):
+        user = User.objects.get(id=self.Absence_user)
+        return user

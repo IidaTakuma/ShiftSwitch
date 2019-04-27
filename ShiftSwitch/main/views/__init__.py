@@ -6,3 +6,4 @@ from .alternativeCreateView import *
 from .alternativeChangeView import *
 from .mypageView import *
 from .managerCalenderView import *
+from .managerDailyView import *

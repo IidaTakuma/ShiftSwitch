@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h2>{{month}}月{{day}}日({{week}})管理者ページ</h2>
+
+    <h3>交代が決まった</h3>
+    {% for changed in absence_changed_list %}
+        <p> {{changed.Absence_user}} → {{changed.get_user_from_id}} </p>
+    {% endfor %}
+    {% for changed in alternative_changed_list %}
+        <p> {{changed.Alternative_user}} → {{changed.get_user_from_id}} </p>
+    {% endfor %}
+
+{% endblock %}
