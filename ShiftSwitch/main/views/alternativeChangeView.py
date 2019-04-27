@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.views.generic import View,DetailView
 from main.models import Alternative
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AlternativeChangeView(View):
+class AlternativeChangeView(LoginRequiredMixin,View):
     model = Alternative
     template_name = "main/alternativeChange.html"
 

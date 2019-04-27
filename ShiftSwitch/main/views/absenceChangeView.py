@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from django.views.generic import View,DetailView
 from main.models import Absence
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AbsenceChangeView(View):
+class AbsenceChangeView(LoginRequiredMixin,View):
     model = Absence
     template_name = "main/absenceChange.html"
 

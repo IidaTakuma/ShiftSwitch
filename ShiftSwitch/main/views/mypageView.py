@@ -1,8 +1,9 @@
 from django.views.generic import TemplateView
 from main.models import Profile
 from users.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class MyPageView(TemplateView):
+class MyPageView(LoginRequiredMixin,TemplateView):
     models = User
     template_name = "main/mypage.html"
 

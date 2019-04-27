@@ -1,8 +1,9 @@
 from django.views.generic import TemplateView
 from main.models import Absence, Alternative
 from users.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class ManagerDailyView(TemplateView):
+class ManagerDailyView(LoginRequiredMixin,TemplateView):
     template_name = 'main/managerDaily.html'
     model = User
     

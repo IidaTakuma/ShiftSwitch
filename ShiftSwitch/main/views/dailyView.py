@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from main.models import Absence, Alternative
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-class DailyView(TemplateView):
+class DailyView(LoginRequiredMixin,TemplateView):
     model = Absence
     template_name = "main/daily.html"
     

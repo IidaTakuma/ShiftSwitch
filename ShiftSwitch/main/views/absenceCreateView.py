@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from main.models import Absence
 from main.forms.createForm import AbsenceCreateForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AbsenceCreateView(CreateView):
+class AbsenceCreateView(LoginRequiredMixin,CreateView):
     model = Absence
     template_name = "main/absenceCreate.html"
     form_class = AbsenceCreateForm

@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from datetime import date, timedelta
 # Create your views here.
 
-class CalendarView(TemplateView):
+class CalendarView(LoginRequiredMixin,TemplateView):
 
     template_name = "main/calendar.html"
 

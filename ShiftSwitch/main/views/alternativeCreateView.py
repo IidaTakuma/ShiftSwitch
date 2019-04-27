@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import CreateView
 from main.models import Alternative
 from main.forms.createForm import AlternativeCreateForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class AlternativeCreateView(CreateView):
+class AlternativeCreateView(LoginRequiredMixin,CreateView):
     model = Alternative
     template_name = "main/alternativeCreate.html"
     form_class = AlternativeCreateForm
