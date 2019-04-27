@@ -4,11 +4,22 @@
     <h2>{{month}}月{{day}}日({{week}})管理者ページ</h2>
 
     <h3>交代が決まった</h3>
-    {% for changed in absence_changed_list %}
-        <p> {{changed.Absence_user}} → {{changed.get_user_from_id}} </p>
+    {% for absence in absence_changed_list %}
+        <p> {{absence.Absence_user}} → {{absence.get_user_from_id}} </p>
     {% endfor %}
-    {% for changed in alternative_changed_list %}
-        <p> {{changed.Alternative_user}} → {{changed.get_user_from_id}} </p>
+    {% for alternative in alternative_changed_list %}
+        <p> {{alternative.Alternative_user}} → {{alternative.get_user_from_id}} </p>
     {% endfor %}
+
+    <h4>欠席したい:
+        {% for absence in absence_not_changed_list%}
+            <span>{{absence.Absence_user}},</span>
+        {% endfor %}
+    </h4>
+    <h4>出勤したい:
+        {% for alternative in alternative_not_changed_list%}
+            <span>{{alternative.Alternative_user}}</span>
+        {% endfor %}
+    </h4>
 
 {% endblock %}
