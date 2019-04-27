@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h2>{{month}}月{{day}}日({{week}})管理者ページ</h2>
+    <h2>{{month}}月{{day}}日({{week}})({{deficiency}})</h2>
 
     <h3>交代が決まった</h3>
     {% for absence in absence_changed_list %}

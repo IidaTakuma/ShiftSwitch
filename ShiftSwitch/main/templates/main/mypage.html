@@ -1,2 +1,9 @@
+{% extends 'base.html' %}
+
+{% block pagetitle %}
+    <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
+        マイページ</h2>
+{% endblock %}
+
 <h2>マイページ</h2>
 <p>名前：{{ profile }}</p>

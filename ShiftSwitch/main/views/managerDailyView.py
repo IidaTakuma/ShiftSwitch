@@ -9,17 +9,25 @@ class ManagerDailyView(LoginRequiredMixin,TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        #日付を渡す部分[開始]
         year = self.request.GET.get('y')
         month = self.request.GET.get('m')
         day = self.request.GET.get('d')
         week = self.request.GET.get('w')
-
         context["year"] = year
         context["month"] = month
         context["day"] = day
         context["week"] = week
-
+        #日付を渡す部分[終了]
+        
         _date = str(year) + "-" + str(month) + "-" + str(day)
+
+        #過不足を渡す部分[開始]
+        is_absence = Absence.objects.filter(date=_date).filter(is_settled=False).count()
+        is_alternative = Alternative.objects.filter(date=_date).filter(is_settled=False).count()
+        context["deficiency"] = is_alternative - is_absence
+        #過不足を渡す部分[終了]
+
         context['absence_changed_list'] = Absence.objects.filter(date = _date).filter(is_settled = True)
         context['alternative_changed_list'] = Alternative.objects.filter(date = _date).filter(is_settled = True)
         context['absence_not_changed_list'] = Absence.objects.filter(date=_date).filter(is_settled = False)
