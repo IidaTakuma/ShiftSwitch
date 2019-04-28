@@ -24,19 +24,21 @@
                 <span class="col-2">+</span>
             </a>
             {% for absence in absence_list %}
-                <p class="list-group-item">
-                    <span class="col-3">{{absence.Absence_user.username}}</span>
-                    <span class="col-1.5"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
-                    <span class="col-1.5"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
-                    {% if absence.is_settled %}
-                        <span class="col-3"><button type="button" class="btn btn-success" > 解決済！</button></span>
-                    {% else %}    
+                <div class="list-group-item">
+                    <div class="row">
+                        <span class="col-4">{{absence.Absence_user.username}}</span>
+                        <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
+                        <span class="col-2"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
+                        {% if absence.is_settled %}
+                            <span class="col-4"><button type="button" class="btn btn-success" > 解決済！</button></span>
+                        {% else %}    
                     <form action={% url 'main:absenceChange' absence.id %} method="post">
                         {% csrf_token %}
                         <input type="submit" class="btn btn-warning" value="代わる！">
                     </form>
                     {% endif %}
-                </p>
+                    </div>
+                </div>
             {% endfor %}
         </div>
 
