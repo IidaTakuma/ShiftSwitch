@@ -20,10 +20,12 @@
     <div class="tab-content">
         <div id="absence" class="tab-pane list-group active">
             <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
-                <span class="col-10">追加する(欠席)</span>
-                <span class="col-2">
-                    <button type="button" class="btn btn-light" style="border-radius: 50%;">+</button>
-                </span>
+                <div class="align-items-center">
+                    <span class="col-10">追加する(欠席)</span>
+                    <span class="col-2">
+                        <button type="button" class="btn btn-light" style="border-radius: 50%;">+</button>
+                    </span>
+                </div>
             </a>
             {% for absence in absence_list %}
                 <div class="list-group-item">
