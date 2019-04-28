@@ -2,13 +2,13 @@
 
 {% block pagetitle %}
     <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
-        <span class="col-sm-6">{{month}}月{{day}}日{{week}}</span>
-        <span class="col-sm-3">({{deficiency}})</span>
+        <span class="col-6">{{month}}月{{day}}日{{week}}</span>
+        <span class="col-3">({{deficiency}})</span>
     </h2>
 {% endblock %}
 
 {% block content %}
-    <ul class="nav nav-tabs mx-auto col-sm-2">
+    <ul class="nav nav-tabs mx-auto col-2">
     <li class="nav-item">
         <a href="#absence" class="nav-link active" data-toggle="tab">代わって欲しい</a>
     </li>
@@ -20,16 +20,16 @@
     <div class="tab-content">
         <div id="absence" class="tab-pane list-group active">
             <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
-                <span class="col-sm-10">追加する(欠席)</span>
-                <span class="col-sm-2">+</span>
+                <span class="col-10">追加する(欠席)</span>
+                <span class="col-2">+</span>
             </a>
             {% for absence in absence_list %}
                 <p class="list-group-item">
-                    <span class="col-sm-3">{{absence.Absence_user.username}}</span>
-                    <span class="col-sm-1.5"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
-                    <span class="col-sm-1.5"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
+                    <span class="col-3">{{absence.Absence_user.username}}</span>
+                    <span class="col-1.5"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
+                    <span class="col-1.5"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
                     {% if absence.is_settled %}
-                        <span class="col-sm-3"><button type="button" class="btn btn-success" > 解決済！</button></span>
+                        <span class="col-3"><button type="button" class="btn btn-success" > 解決済！</button></span>
                     {% else %}    
                     <form action={% url 'main:absenceChange' absence.id %} method="post">
                         {% csrf_token %}
