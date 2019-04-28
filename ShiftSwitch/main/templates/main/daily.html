@@ -44,8 +44,10 @@
 
         <div id="alternative" class="tab-pane list-group">
             <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
-                <span class="col-sm-10">追加する(出席)</span>
-                <span class="col-sm-2">+</span>
+                <div class="row">
+                    <span class="col-10">追加する(出席)</span>
+                    <span class="col-2">+</span>
+                </div>
             </a>
             {% for alternative in alternative_list %}
                 <div class="list-group-item">
