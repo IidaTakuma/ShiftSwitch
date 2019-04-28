@@ -4,10 +4,18 @@
 
     <h3>交代が決まった</h3>
     {% for absence in absence_changed_list %}
-        <p> {{absence.Absence_user}} → {{absence.get_user_from_id}} </p>
+        <p>
+            <span class="col-sm-5">{{absence.Absence_user}}</span>
+            <span class="col-sm-2">→</span>
+            <span class="col-sm-5">{{absence.get_user_from_id}}</span>
+        </p>
     {% endfor %}
     {% for alternative in alternative_changed_list %}
-        <p> {{alternative.Alternative_user}} → {{alternative.get_user_from_id}} </p>
+        <p>
+            <span class="col-sm-5">{{alternative.Alternative_user}}</span>
+            <span class="col-sm-2">→</span>
+            <span classs="col-sm-5">{{alternative.get_user_from_id}}</span>
+        </p>
     {% endfor %}
 
     <h4>欠席したい:
