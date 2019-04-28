@@ -26,8 +26,8 @@
             {% for absence in absence_list %}
                 <p class="list-group-item">
                     <span class="col-sm-3">{{absence.Absence_user.username}}</span>
-                    <span class="col-sm-1.5"><button type="button" class="btn btn-primary btn-sm">AM</button></span>
-                    <span class="col-sm-1.5"><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                    <span class="col-sm-1.5"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 20%;">AM</button></span>
+                    <span class="col-sm-1.5"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 20%;">PM</button></span>
                     {% if absence.is_settled %}
                         <span class="col-sm-3"><button type="button" class="btn btn-success" > 解決済！</button></span>
                     {% else %}    
@@ -48,8 +48,8 @@
             {% for alternative in alternative_list %}
                 <p class="list-group-item">
                     <span class="col-sm-8">{{alternative.Alternative_user.username}}</span>
-                    <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
-                    <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                    <span><button type="button" class="btn btn-primary btn-sm" style="border-radius: 20%;">AM</button></span>
+                    <span><button type="button" class="btn btn-danger btn-sm" style="border-radius: 20%;">PM</button></span>
                     {% if alternative.is_settled %}
                         <span><button type="button" class="btn btn-success" > 解決済！</button></span>
                     {% else %}
