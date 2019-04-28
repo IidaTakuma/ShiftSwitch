@@ -2,7 +2,9 @@
 
 {% block pagetitle %}
     <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
-        {{month}}月{{day}}日{{week}}({{deficiency}})</h2>
+        <span class="col-sm-6">{{month}}月{{day}}日{{week}}</span>
+        <span class="col-sm-3">({{deficiency}})</span>
+    </h2>
 {% endblock %}
 
 {% block content %}
@@ -18,16 +20,16 @@
     <div class="tab-content">
         <div id="absence" class="tab-pane list-group active">
             <a class="list-group-item" href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
-                <span>追加する(欠席)</span>
-                <span>+</span>
+                <span class="col-sm-10">追加する(欠席)</span>
+                <span class="col-sm-2">+</span>
             </a>
             {% for absence in absence_list %}
                 <p class="list-group-item">
-                    <span class="col-sm-8">{{absence.Absence_user.username}}</span>
-                    <span><button type="button" class="btn btn-primary btn-sm">AM</button></span>
-                    <span><button type="button" class="btn btn-danger btn-sm">PM</button></span>
+                    <span class="col-sm-3">{{absence.Absence_user.username}}</span>
+                    <span class="col-sm-1.5"><button type="button" class="btn btn-primary btn-sm">AM</button></span>
+                    <span class="col-sm-1.5"><button type="button" class="btn btn-danger btn-sm">PM</button></span>
                     {% if absence.is_settled %}
-                        <span><button type="button" class="btn btn-success" > 解決済！</button></span>
+                        <span class="col-sm-3"><button type="button" class="btn btn-success" > 解決済！</button></span>
                     {% else %}    
                     <form action={% url 'main:absenceChange' absence.id %} method="post">
                         {% csrf_token %}
@@ -40,8 +42,8 @@
 
         <div id="alternative" class="tab-pane list-group">
             <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
-                <span>追加する(出席)</span>
-                <span>+</span>
+                <span class="col-sm-10">追加する(出席)</span>
+                <span class="col-sm-2">+</span>
             </a>
             {% for alternative in alternative_list %}
                 <p class="list-group-item">
