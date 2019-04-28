@@ -33,7 +33,7 @@
                     {% else %}    
                     <form action={% url 'main:absenceChange' absence.id %} method="post">
                         {% csrf_token %}
-                        <input type="submit" value="代わる！">
+                        <input type="submit" class="btn btn-warning" value="代わる！">
                     </form>
                     {% endif %}
                 </p>
@@ -55,7 +55,7 @@
                     {% else %}
                     <form action={% url 'main:alternativeChange' alternative.id %} method="post">
                         {% csrf_token %}
-                        <input type="submit" value="代わる！">
+                        <input type="submit" class="btn btn-warning" value="代わる！">
                     </form>
                     {% endif %}
                 </p>
