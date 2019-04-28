@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 {% comment %} [hidaka]switch month {% endcomment %}
-<ul class="nav nav-tabs mx-auto col-sm-2">
+<ul class="nav nav-tabs mx-auto col-2">
   <li class="nav-item">
     <a href="#this_month" class="nav-link active" data-toggle="tab">今月</a>
   </li>
@@ -20,8 +20,8 @@
   <div id="this_month" class="tab-pane list-group active">
     {% for day in weekends_thismonth %}
       <a class="list-group-item" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
-        <span class="col-sm-8">{{day.1}}/{{day.2}} {{day.3}}</span>
-        <span class="col-sm-4">（{{ day | count_deficiency }}）</span>
+        <span class="col-8">{{day.1}}/{{day.2}} {{day.3}}</span>
+        <span class="col-4">（{{ day | count_deficiency }}）</span>
       </a>
     {% endfor %}
   </div>
@@ -29,8 +29,8 @@
   <div id="next_month" class="tab-pane list-group">
     {% for day in weekends_nextmonth %}
       <a class="list-group-item" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
-        <span class="col-sm-8">{{day.1}}/{{day.2}} {{day.3}}</span>
-        <span class="col-sm-8">（{{ day | count_deficiency }}）</span>
+        <span class="col-8">{{day.1}}/{{day.2}} {{day.3}}</span>
+        <span class="col-8">（{{ day | count_deficiency }}）</span>
       </a>
 
     {% endfor %}
