@@ -27,7 +27,7 @@
             </a>
             {% for absence in absence_list %}
                 <div class="list-group-item">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <span class="col-4">{{absence.Absence_user.username}}</span>
                         <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
                         <span class="col-2"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
@@ -55,7 +55,7 @@
             </a>
             {% for alternative in alternative_list %}
                 <div class="list-group-item">
-                    <div class="row">
+                    <div class="row align-items-center">
                         <span class="col-4">{{alternative.Alternative_user.username}}</span>
                         <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
                         <span class="col-2"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
