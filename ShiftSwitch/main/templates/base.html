@@ -22,7 +22,7 @@
               <a href="{% url 'main:mypage' %}">{{user}}</a>
               <a href="{% url 'main:calender' %}">勤怠管理</a>
               {% if user.is_staff %}
-              {% block menu %}<a href="{% url 'main:managerCalender' %}">管理者画面</a>{% endblock %}
+              {% block menu %}<a href="{% url 'main:managerCalender' %}">管理者モード</a>{% endblock %}
               {% endif %}
               <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
           </div>
