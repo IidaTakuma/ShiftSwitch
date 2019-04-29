@@ -13,3 +13,17 @@ class Absence(models.Model):
     def get_user_from_id(self):
         user = User.objects.get(id=self.Alternative_user)
         return user
+
+    def shift_zone_judge_AM(self):
+        _shift_zone = self.shift_zone
+        if _shift_zone == "AM" or _shift_zone == "BOTH":
+            return True
+        
+        return False
+
+    def shift_zone_judge_PM(self):
+        _shift_zone = self.shift_zone
+        if _shift_zone == "PM" or _shift_zone == "BOTH":
+            return True
+        
+        return False
