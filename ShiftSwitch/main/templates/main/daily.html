@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block pagetitle %}
-    <h2 class="navbar-brand"><a href="{% url 'main:calender' %}">戻る</a>
+    <h2 class="navbar-brand">
         <span class="col-6">{{month}}月{{day}}日{{week}}</span>
         <span class="col-3">({{deficiency}})</span>
     </h2>
@@ -22,17 +22,17 @@
             {% if ownAbsence %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-9">この日は既に欠席連絡をしています！</span>
-                        <form action={% url 'main:deleteAbsence' ownAbsence.0.id %} method="post">
+                        <span class="col-8">この日は既に欠席連絡をしています！</span>
+                        <span class="col-4"><form action={% url 'main:deleteAbsence' ownAbsence.0.id %} method="post">
                             {% csrf_token %}
                             <input type="submit" class="btn btn-danger" value="取り消す">
-                        </form>
+                        </span></form>
                     </div>
                 </div>
             {% else %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-9">追加する</span>
+                        <span class="col-8">追加する</span>
                         <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
                     </div>
                 </div>
@@ -40,17 +40,17 @@
             {% for absence in absence_list %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-5">{{absence.Absence_user.username}}</span>
+                        <span class="col-4">{{absence.Absence_user.username}}</span>
                         <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
                         <span class="col-2"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;">PM</button></span>
                         {% if absence.is_settled %}
-                            <span class="col-5"><button type="button" class="btn btn-success" > 解決済！</button></span>
+                            <span class="col-4"><button type="button" class="btn btn-success" > 解決済！</button></span>
                         {% else %}    
-                    <form action={% url 'main:absenceChange' absence.id %} method="post">
-                        {% csrf_token %}
-                        <input type="submit" class="btn btn-warning" value="代わる！">
-                    </form>
-                    {% endif %}
+                            <span class="col-4"><form action={% url 'main:absenceChange' absence.id %} method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-warning" value="代わる！">
+                            </form></span>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
@@ -62,17 +62,17 @@
             {% if ownAlternative %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-9">この日は既に出勤連絡をしています！</span>
-                        <form action={% url 'main:deleteAlternative' ownAlternative.0.id %} method="post">
+                        <span class="col-8">この日は既に出勤連絡をしています！</span>
+                        <span class="col-4"><form action={% url 'main:deleteAlternative' ownAlternative.0.id %} method="post">
                             {% csrf_token %}
                             <input type="submit" class="btn btn-danger" value="取り消す">
-                        </form>
+                        </span></form>
                     </div>
                 </div>
             {% else %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-9">追加する</span>
+                        <span class="col-8">追加する</span>
                         <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
                     </div>
                 </div>
@@ -86,10 +86,10 @@
                         {% if alternative.is_settled %}
                             <span class="col-4"><button type="button" class="btn btn-success" > 解決済！</button></span>
                         {% else %}
-                        <form action={% url 'main:alternativeChange' alternative.id %} method="post" class="col-4">
+                        <span class="col-4"><form action={% url 'main:alternativeChange' alternative.id %} method="post" class="col-4">
                             {% csrf_token %}
                             <input type="submit" class="btn btn-warning" value="代わる！">
-                        </form>
+                        </span></form>
                     {% endif %}
                 </div>
             {% endfor %}
