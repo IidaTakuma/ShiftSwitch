@@ -30,12 +30,12 @@
                     </div>
                 </div>
             {% else %}
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <span class="col-8">追加する</span>
-                        <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
-                    </div>
+            <div class="list-group-item">
+                <div class="row align-items-center">
+                    <span class="col-8">追加する</span>
+                    <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
                 </div>
+            </div>
             {% endif %}
             {% for absence in absence_list %}
                 <div class="list-group-item">
@@ -102,15 +102,16 @@
                         {% if alternative.is_settled %}
                             <span class="col-4"><button type="button" class="btn btn-success" > 解決済！</button></span>
                         {% else %}
-                        <span class="col-4"><form action={% url 'main:alternativeChange' alternative.id %} method="post" class="col-4">
-                            {% csrf_token %}
+                            <span class="col-4"><form action={% url 'main:alternativeChange' alternative.id %} method="post">
+                                {% csrf_token %}
                             <input type="submit" class="btn btn-warning" value="代わる！">
-                        </span></form>
-                    {% endif %}
+                            </span></form>
+                        {% endif %}
+                    </div>
                 </div>
             {% endfor %}
         </div>
-    {% comment %} 代わってあげるリスト[終了] {% endcomment %}
+        {% comment %} 代わってあげるリスト[終了] {% endcomment %}
     </div>
 {% endblock %}
 
