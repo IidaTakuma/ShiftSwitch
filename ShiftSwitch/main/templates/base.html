@@ -10,22 +10,32 @@
   </head>
   <body>
     {% block body %}
-    <nav class="navbar nabvar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       {% block pagetitle %}
-        <h2 class="navbar-brand">勤怠管理システム</h2>
+        <h2 class="navbar-brand col-4">勤怠管理システム</h2>
       {% endblock %}
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <div class="navbar-nav">
+      <div class="collapse navbar-collapse col-lg-4 offset-lg-4" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item col-6 active">
               <a href="{% url 'main:mypage' %}">{{user}}</a>
+            </li>
+            <li class="nav-item col-6">
               <a href="{% url 'main:calender' %}">勤怠管理</a>
+            </li>
               {% if user.is_staff %}
-              {% block menu %}<a href="{% url 'main:managerCalender' %}">管理者モード</a>{% endblock %}
+              {% block menu %}
+                <li class="nav-item col-6">
+                  <a href="{% url 'main:managerCalender' %}">管理者モード</a>
+                </li>
+              {% endblock %}
               {% endif %}
-              <a href="{% url 'accounts:logout' %}">ログアウト</a><br>
-          </div>
+            <li class="nav-item col-6">
+              <a href="{% url 'accounts:logout' %}">ログアウト</a>
+            </li>
+          </dul>
       </div>
   </nav>
     
