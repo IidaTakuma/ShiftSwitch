@@ -1,32 +1,73 @@
 {% extends 'base.html' %}
-{% block body %}
-    <h2>{{month}}月{{day}}日({{week}})({{deficiency}})</h2>
+{% block pagetitle %}
+    <h2 class="navbar-brand">[管理者]
+    {{month}}月{{day}}日({{week}})({{deficiency}})</h2>
+{% endblock %}
 
-    <h3>交代が決まった</h3>
+{% block content %}
+    <div class="list-group-item">
+        <div class="row align-items-center">
+            <h3>交代が決まった</h3>
+        </div>
+    </div>
+
     {% for absence in absence_changed_list %}
-        <p>
-            <span class="col-sm-5">{{absence.Absence_user}}</span>
-            <span class="col-sm-2">→</span>
-            <span class="col-sm-5">{{absence.get_user_from_id}}</span>
-        </p>
+        <div class="list-group-item">
+            <div class="row align-items-center">
+                <span class="col-sm-5">{{absence.Absence_user}}</span>
+                <span class="col-sm-2">→</span>
+                <span class="col-sm-5">{{absence.get_user_from_id}}</span>
+            </div>
+        </div>
     {% endfor %}
     {% for alternative in alternative_changed_list %}
-        <p>
+        <div class="list-group-item">
             <span class="col-sm-5">{{alternative.Alternative_user}}</span>
             <span class="col-sm-2">→</span>
             <span classs="col-sm-5">{{alternative.get_user_from_id}}</span>
-        </p>
+        </div>
     {% endfor %}
 
-    <h4>欠席したい:
-        {% for absence in absence_not_changed_list%}
-            <span>{{absence.Absence_user}},</span>
-        {% endfor %}
-    </h4>
-    <h4>出勤したい:
-        {% for alternative in alternative_not_changed_list%}
-            <span>{{alternative.Alternative_user}}</span>
-        {% endfor %}
-    </h4>
+    <div class="list-group-item">
+        <div class="row align-items-center">
+            <h3>欠席したい</h3>
+        </div>
+    </div>
 
+    {% if absence_not_changed_list %}
+        {% for absence in absence_not_changed_list%}
+            <div class="list-group-item">
+                <div class="row align-items-center">
+                    <span>{{absence.Absence_user}}</span>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="list-group-item">
+            <div class="row align-items-center">
+                <span>なし</span>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="list-group-item">
+        <div class="row align-items-center">
+            <h3>出勤したい</h3>
+        </div>
+    </div>
+    {% if alternative_not_changed_list %}
+        {% for alternative in alternative_not_changed_list%}
+            <div class="list-group-item">
+                <div class="row align-items-center">
+                    <span>{{alternative.Alternative_user}}</span>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="list-group-item">
+            <div class="row align-items-center">
+                <span>なし</span>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
