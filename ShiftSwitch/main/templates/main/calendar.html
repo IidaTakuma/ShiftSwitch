@@ -23,7 +23,7 @@
       <a class="list-group-item text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
         <div class="row align-items-center">
           <span class="col-10">{{day.1}}/{{day.2}} {{day.3}}</span>
-          <span class="col-2">（{{ day | count_deficiency }}）</span>
+          <span class="col-2 text-center">（{{ day | count_deficiency }}）</span>
         </div>
       </a>
     {% endfor %}
@@ -34,7 +34,7 @@
       <a class="list-group-item text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
         <div class="row align-items-center">
           <span class="col-10">{{day.1}}/{{day.2}} {{day.3}}</span>
-          <span class="col-2">（{{ day | count_deficiency }}）</span>
+          <span class="col-2 text-center">（{{ day | count_deficiency }}）</span>
         </div>
       </a>
 
