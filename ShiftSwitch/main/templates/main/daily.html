@@ -16,7 +16,7 @@
         <a href="#alternative" class="nav-link" data-toggle="tab">代わってあげる</a>
     </li>
     </ul>
-
+{% comment %} 代わって欲しいリスト[開始] {% endcomment %}
     <div class="tab-content">
         <div id="absence" class="tab-pane list-group active">
             {% if ownAbsence %}
@@ -55,16 +55,28 @@
                 </div>
             {% endfor %}
         </div>
+    {% comment %} 代わって欲しいリスト[終了] {% endcomment %}
 
+    {% comment %} 代わってあげるリスト[開始] {% endcomment %}
         <div id="alternative" class="tab-pane list-group">
-            <a class="list-group-item" href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}">
-                <div class="row align-items-center">
-                    <span class="col-10">追加する(出席)</span>
-                    <span class="col-2">
-                        <button type="button" class="btn btn-light" style="border-radius: 50%;">+</button>
-                    </span>
+            {% if ownAlternative %}
+                <div class="list-group-item">
+                    <div class="row align-items-center">
+                        <span class="col-9">この日は既に出勤連絡をしています！</span>
+                        <form action={% url 'main:deleteAlternative' ownAlternative.0.id %} method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger" value="取り消す">
+                        </form>
+                    </div>
                 </div>
-            </a>
+            {% else %}
+                <div class="list-group-item">
+                    <div class="row align-items-center">
+                        <span class="col-9">追加する</span>
+                        <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
+                    </div>
+                </div>
+            {% endif %}
             {% for alternative in alternative_list %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
@@ -82,6 +94,7 @@
                 </div>
             {% endfor %}
         </div>
+    {% comment %} 代わってあげるリスト[終了] {% endcomment %}
     </div>
 {% endblock %}
 
