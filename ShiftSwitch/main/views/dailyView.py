@@ -24,13 +24,14 @@ class DailyView(LoginRequiredMixin,TemplateView):
         #日付を渡す部分[終了]
         _date = str(year) + "-" + str(month) + "-" + str(day)
         #過不足を渡す部分[開始]
-        is_absence = Absence.objects.filter(date=_date).filter(is_settled=False).count()
-        is_alternative = Alternative.objects.filter(date=_date).filter(is_settled=False).count()
+        is_absence = Absence.objects.filter(date=_date,is_settled=False).count()
+        is_alternative = Alternative.objects.filter(date=_date,is_settled=False).count()
         context["deficiency"] = is_alternative - is_absence
         #過不足を渡す部分[終了]
 
-
-        context['absence_list'] = Absence.objects.filter(date = _date)
-        context['alternative_list'] = Alternative.objects.filter(date = _date)
-
+        _user = self.request.user
+        context['absence_list'] = Absence.objects.filter(date = _date).exclude(Absence_user = _user)
+        context['alternative_list'] = Alternative.objects.filter(date = _date).exclude(Alternative_user = _user)
+        context['ownAbsence'] = Absence.objects.filter(date = _date, Absence_user = _user)
+        context['ownAlternative'] = Alternative.objects.filter(date = _date, Alternative_user = _user)
         return context

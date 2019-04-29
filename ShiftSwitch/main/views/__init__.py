@@ -7,3 +7,5 @@ from .alternativeChangeView import *
 from .mypageView import *
 from .managerCalenderView import *
 from .managerDailyView import *
+from .deleteAbsence import *
+from .deleteAlternative import *
