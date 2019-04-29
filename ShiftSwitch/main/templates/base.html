@@ -22,9 +22,6 @@
             <li class="nav-item col-3 active">
               <a href="{% url 'main:mypage' %}">{{user.mentor_name}}</a>
             </li>
-            <li class="nav-item col-3">
-              <a href="{% url 'main:calender' %}">勤怠管理</a>
-            </li>
               {% if user.is_staff %}
               {% block menu %}
                 <li class="nav-item col-3">
