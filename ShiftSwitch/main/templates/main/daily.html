@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+<main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
     <ul class="nav nav-tabs">
     <li class="nav-item col-6 text-center px-0">
         <a href="#absence" class="nav-link text-dark active" data-toggle="tab">代わって欲しい</a>
@@ -113,6 +114,7 @@
         </div>
         {% comment %} 代わってあげるリスト[終了] {% endcomment %}
     </div>
+    </main>
 {% endblock %}
 
 {% comment %} <span><button type="button" class="btn btn-success" onclick="location.href="{% url 'main:addalternative' absence.id %}"">代わる</button></span> {% endcomment %}
