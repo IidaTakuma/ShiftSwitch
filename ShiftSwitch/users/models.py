@@ -27,6 +27,7 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
+    mentor_name = models.CharField(max_length=30, verbose_name='メンター名', blank=False)
     full_name = models.CharField(_('氏名'), max_length=150, blank=True)
     email = models.EmailField(_('email address'), blank=True)
     is_staff = models.BooleanField(

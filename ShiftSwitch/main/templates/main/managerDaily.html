@@ -22,9 +22,11 @@
     {% endfor %}
     {% for alternative in alternative_changed_list %}
         <div class="list-group-item">
-            <span class="col-sm-5">{{alternative.Alternative_user}}</span>
-            <span class="col-sm-2">→</span>
-            <span classs="col-sm-5">{{alternative.get_user_from_id}}</span>
+            <div class="row align-items-center">
+                <span class="col-sm-5">{{alternative.Alternative_user}}</span>
+                <span class="col-sm-2">→</span>
+                <span class="col-sm-5">{{alternative.get_user_from_id}}</span>
+            </div>
         </div>
     {% endfor %}
 

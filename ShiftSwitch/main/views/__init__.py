@@ -9,3 +9,4 @@ from .managerCalenderView import *
 from .managerDailyView import *
 from .deleteAbsence import *
 from .deleteAlternative import *
+from .createUserView import *

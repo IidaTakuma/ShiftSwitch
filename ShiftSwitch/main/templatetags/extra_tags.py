@@ -1,5 +1,5 @@
 from django import template
-from main.models import Absence, Alternative
+from main.models import Absence, Alternative, Profile
 
 register = template.Library()
 
@@ -17,3 +17,4 @@ def count_deficiency(day):
     deficiency = is_alternative - is_absence
 
     return deficiency
+

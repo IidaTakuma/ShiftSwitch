@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = ('username', 'email','mentor_name')
 
 def signup(request):
     if request.method == 'POST':

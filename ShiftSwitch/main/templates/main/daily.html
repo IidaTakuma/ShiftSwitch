@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block pagetitle %}
     <h2 class="navbar-brand">
         <span class="col-6">{{month}}月{{day}}日{{week}}</span>
@@ -41,7 +40,7 @@
             {% for absence in absence_list %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-4">{{absence.Absence_user.username}}</span>
+                        <span class="col-4">{{absence.Absence_user.mentor_name}}</span>
                         {% if absence.shift_zone_judge_AM %}
                             <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
                         {% else %}
@@ -89,7 +88,7 @@
             {% for alternative in alternative_list %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-4">{{alternative.Alternative_user.username}}</span>
+                        <span class="col-4">{{alternative.Alternative_user.mentor_name}}</span>
                         {% if alternative.shift_zone_judge_AM %}
                             <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;">AM</button></span>
                         {% else %}
