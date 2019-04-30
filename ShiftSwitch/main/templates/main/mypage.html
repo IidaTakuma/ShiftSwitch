@@ -3,6 +3,11 @@
 {% block pagetitle %}
     マイページ
 {% endblock %}
+{% block content %}
+    <div class="container">
+        <p>ユーザ名：{{ profile }}</p>
+        <p>メンター名：{{user.mentor_name}}</p>
+        <p>固定シフト：</p>
+    </div>
 
-<h2>マイページ</h2>
-<p>名前：{{ profile }}</p>
+{% endblock %}
