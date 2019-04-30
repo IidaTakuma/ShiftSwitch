@@ -9,8 +9,6 @@ class AbsenceCreateView(LoginRequiredMixin,CreateView):
     template_name = "main/absenceCreate.html"
     form_class = AbsenceCreateForm
 
-    # fields = ("shift_zone", "comment",)
-
     def get_date(self):
         year = self.request.GET.get('y')
         month = self.request.GET.get('m')
