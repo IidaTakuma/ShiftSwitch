@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% block pagetitle %}
-    <h2 class="navbar-brand">
-        <span class="col-6">{{month}}月{{day}}日{{week}}</span>
-        <span class="col-3">({{deficiency}})</span>
-    </h2>
+    <span class="col-6">{{month}}月{{day}}日{{week}}</span>
+    <span class="col-3">({{deficiency}})</span>
 {% endblock %}
 
 {% block content %}
