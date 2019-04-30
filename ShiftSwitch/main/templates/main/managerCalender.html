@@ -9,11 +9,12 @@
 {% endblock %}
 {% block content %}
 {% comment %} [hidaka]switch month {% endcomment %}
-<ul class="nav nav-tabs mx-auto col-sm-2">
-  <li class="nav-item">
+<main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
+<ul class="nav nav-tabs">
+  <li class="nav-item col-6 text-center px-0">
     <a href="#this_month" class="nav-link active" data-toggle="tab">今月</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item col-6 text-center px-0">
     <a href="#next_month" class="nav-link" data-toggle="tab">来月</a>
   </li>
 </ul>
@@ -23,14 +24,26 @@
 <div class="tab-content">
   <div id="this_month" class="tab-pane list-group active">
     {% for day in weekends_thismonth %}
-      <a class="list-group-item" href="{% url 'main:managerDaily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}（{{ day | count_deficiency }}）</a>
+      <a class="list-group-item text-dark" href="{% url 'main:managerDaily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
+        <div class="row align-items-center">
+          <span class="col-10">{{day.1}}/{{day.2}} {{day.3}}</span>
+          <span class="col-2 text-center">（{{ day | count_deficiency }}）</span>
+        </div>
+      </a>
     {% endfor %}
   </div>
   
   <div id="next_month" class="tab-pane list-group">
     {% for day in weekends_nextmonth %}
-      <a class="list-group-item" href="{% url 'main:managerDaily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">{{day.1}}/{{day.2}} {{day.3}}（{{ day | count_deficiency }}）</a>
+      <a class="list-group-item text-dark" href="{% url 'main:managerDaily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
+        <div class="row align-items-center">
+          <span class="col-10">{{day.1}}/{{day.2}} {{day.3}}</span>
+          <span class="col-2 text-center">（{{ day | count_deficiency }}）</span>
+        </div>
+      </a>
+
     {% endfor %}
   </div>
 </div>
+</main>
 {% endblock %}
