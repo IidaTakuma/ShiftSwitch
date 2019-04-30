@@ -16,7 +16,7 @@ class CreateUserView(CreateView):
         user = User()
         user.username = _username
         user.mentor_name = _mentor_name
-        user.password = _password
+        user.set_password(_password)
         user.save()
         print(_username + "を作成しました")
         return redirect(to = '/')
