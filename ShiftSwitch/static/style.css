@@ -6,8 +6,9 @@ a, a:hover, a:active {
   -moz-user-select: none;
   -webkit-user-select: none;
 }
-.radbtn{
-  border-radius: 50%;
+footer {
+  position:absolute!important;
+  bottom: 0!important;
 }
 .shdbtn{
   filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));
