@@ -15,65 +15,82 @@
 
 {% block content %}
     <main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
+        {% comment %}交代確定(ここから){% endcomment %}
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">交代が決まった</h5>
                 <div class="card-text">
                     <div class="list-group-item">
-                        <div class="row align-items-center">
-                            {% if absence_changed_list or alternative_changed_list %}
-                                {% for absence in absence_changed_list %}
+                        {% if absence_changed_list or alternative_changed_list %}
+                            {% for absence in absence_changed_list %}
+                                <div class="row align-items-center">
                                     <span class="col-5 text-left">{{absence.Absence_user}}</span>
                                     <span class="col-2 text-center">→</span>
                                     <span class="col-5 text-right">{{absence.get_user_from_id}}</span>
-                                {% endfor %}
-                                {% for alternative in alternative_changed_list %}
+                                </div>
+                            {% endfor %}
+                            {% for alternative in alternative_changed_list %}
+                                <div class="row align-items-center">
                                     <span class="col-5 text-left">{{alternative.Alternative_user}}</span>
                                     <span class="col-2 text-center">→</span>
                                     <span class="col-5 text-right">{{alternative.get_user_from_id}}</span>
-                                {% endfor %}
-                            {% else %}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="row align-items-center">
                                 <span>なし</span>
-                            {% endif %}
-                        </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
+        {% comment %}交代確定(ここまで){% endcomment %}
         
-        
-        <h4>欠席したい</h4>
-        {% if absence_not_changed_list %}
-            {% for absence in absence_not_changed_list%}
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <span>{{absence.Absence_user}}</span>
+        {% comment %}欠席希望(ここから){% endcomment %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">欠席したい</h5>
+                <div class="card-text">
+                    <div class="list-group-item">
+                        {% if absence_not_changed_list %}
+                            {% for absence in absence_not_changed_list%}
+                                <div class="row align-items-center">
+                                    <span>{{absence.Absence_user}}</span>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="row align-items-center">
+                                <span>なし</span>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            <div class="list-group-item">
-                <div class="row align-items-center">
-                    <span>なし</span>
-                </div>
             </div>
-        {% endif %}
-
-        <h4>出勤したい</h4>
-        {% if alternative_not_changed_list %}
-            {% for alternative in alternative_not_changed_list%}
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <span>{{alternative.Alternative_user}}</span>
+        </div>
+        {% comment %}欠席希望(ここまで){% endcomment %}
+        
+        {% comment %}出勤希望(ここから){% endcomment %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">出勤したい</h5>
+                <div class="card-text">
+                    <div class="list-group-item">
+                            {% if alternative_not_changed_list %}
+                                {% for alternative in alternative_not_changed_list%}
+                                    <div class="row align-items-center">
+                                        <span>{{alternative.Alternative_user}}</span>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="row align-items-center">
+                                    <span>なし</span>
+                                </div>
+                            {% endif %}
                     </div>
                 </div>
-            {% endfor %}
-        {% else %}
-            <div class="list-group-item">
-                <div class="row align-items-center">
-                    <span>なし</span>
-                </div>
             </div>
-        {% endif %}
+        </div>
+        {% comment %}出勤希望(ここまで){% endcomment %}
     </main>
 {% endblock %}
