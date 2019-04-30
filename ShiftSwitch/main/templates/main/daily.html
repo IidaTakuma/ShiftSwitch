@@ -42,12 +42,12 @@
                         {% if absence.shift_zone_judge_AM %}
                             <span class="col-2"><button type="button" class="btn btn-primary btn-sm" style="border-radius: 50%;filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));">AM</button></span>
                         {% else %}
-                            <span class="col-2"><button type="button" class="btn btn-light btn-sm" style="border-radius: 50%;filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));">--</button></span>
+                            <span class="col-2">--</span>
                         {% endif %}
                         {% if absence.shift_zone_judge_PM %}
                             <span class="col-2"><button type="button" class="btn btn-danger btn-sm" style="border-radius: 50%;filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));">PM</button></span>
                         {% else %}
-                            <span class="col-2"><button type="button" class="btn btn-light btn-sm" style="border-radius: 50%;filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.6));">--</button></span>
+                            <span class="col-2">--</span>
                         {% endif %}
                         {% if absence.is_settled %}
                             <span class="col-4 text-center"><button type="button" class="btn btn-success" > 解決済！</button></span>
