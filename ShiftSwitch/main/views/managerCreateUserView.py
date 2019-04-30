@@ -5,7 +5,7 @@ from main.forms import CreateUserForm
 
 class CreateUserView(CreateView):
     model = User
-    template_name = "main/createUser.html"
+    template_name = "main/managerCreateUser.html"
     form_class = CreateUserForm
 
     def post(self, request, *args, **kwargs):
