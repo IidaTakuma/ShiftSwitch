@@ -8,7 +8,7 @@ from accounts.views import OriginalLoginForm
 app_name='accounts'
 
 urlpatterns = [
-    path('signup/', views.signup, name='signup'),
+    # path('signup/', views.signup, name='signup'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('login/', OriginalLoginForm.as_view(), name='login'),
 ]

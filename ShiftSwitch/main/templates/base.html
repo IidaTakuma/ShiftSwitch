@@ -1,43 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=devive-width, initial-scale=1">
-    <title>ShiftSwitch</title>
-    <link rel="icon" href="{% static 'logo.ico' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body class="container-fluid px-0">
-    {% block body %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=devive-width, initial-scale=1">
+  <title>ShiftSwitch</title>
+  <link rel="icon" href="{% static 'logo.ico' %}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="container-fluid px-0">
+  {% block body %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light row">
-        <h2 class="navbar-brand col-3">{% block pagetitle %}<a style="color:black;" href="{% url 'main:calender' %}">Shift Switch</a>{% endblock %}</h2>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <h2 class="navbar-brand col-3">{% block pagetitle %}<a style="color:black;" href="{% url 'main:calender' %}">Shift Switch</a>{% endblock %}</h2>
+      {% block tabButton %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse col-9" id="navbarSupportedContent">
+        </button>
+        <div class="collapse navbar-collapse col-9" id="navbarSupportedContent">
           <ul class="navbar-nav row col-md-12 col-lg-7 offset-lg-5 justify-content-around">
             <li class="nav-item active">
               <a href="{% url 'main:mypage' %}">{{user.mentor_name}}</a>
             </li>
-              {% if user.is_staff %}
-              {% block menu %}
-                <li class="nav-item">
+            {% if user.is_staff %}
+              <li class="nav-item">
+                {% block menu %}
                   <a href="{% url 'main:managerCalender' %}">管理者モード</a>
-                </li>
-              {% endblock %}
-              {% endif %}
+                {% endblock %}
+              </li>
+            {% endif %}
             <li class="nav-item">
               <a href="{% url 'accounts:logout' %}">ログアウト</a>
             </li>
           </ul>
-      </div>
-  </nav>
-    
+        </div>
+      {% endblock %}
+    </nav>
     {% block content %}
     {% endblock %}
   {% endblock %}
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>

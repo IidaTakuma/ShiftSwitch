@@ -1,8 +1,15 @@
 {% extends 'base.html' %}
-{% block body %}
+{% load widget_tweaks %}
+{% block pagetitle %}
+    <span class="col-3">ユーザ作成</span>
+{% endblock %}
+{% block menu %}
+    <a href="{% url 'main:calender' %}">通常モード</a>
+    
+{% endblock %}
+{% block content %}
     <div class="container">
-        <h2>ユーザー追加</h2>
-        <form method="post" novalidate>
+        <form method="post" class="form-horizontal">
             {% csrf_token %}
             {% include 'includes/form.html' %}
             <button type="submit" class="btn btn-primary">ユーザを追加</button>
