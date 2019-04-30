@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 {% block tabButton %}{% endblock %}
 {% block content %}
-    <div class="container">
+    <main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
         <div>ログイン</div>
         <form method="post" class="form-horizontal">
             {% csrf_token %}
@@ -18,5 +18,5 @@
                 <div class='col-4 offset-4'><button type="submit" class="btn btn-primary rounded-pill">ログイン</button></div>
             </div>
         </form>
-    </div>
+    </main>
 {% endblock %}
