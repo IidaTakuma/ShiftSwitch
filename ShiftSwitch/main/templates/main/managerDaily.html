@@ -15,12 +15,7 @@
 
 {% block content %}
     <main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
-        <div class="list-group-item">
-            <div class="row align-items-center">
-                <h4>交代が決まった</h4>
-            </div>
-        </div>
-
+        <h4>交代が決まった</h4>
         {% if absence_changed_list or alternative_changed_list %}
             {% for absence in absence_changed_list %}
                 <div class="list-group-item">
@@ -47,13 +42,8 @@
                 </div>
             </div>
         {% endif %}
-
-        <div class="list-group-item">
-            <div class="row align-items-center">
-                <h4>欠席したい</h4>
-            </div>
-        </div>
-
+        
+        <h4>欠席したい</h4>
         {% if absence_not_changed_list %}
             {% for absence in absence_not_changed_list%}
                 <div class="list-group-item">
@@ -70,11 +60,7 @@
             </div>
         {% endif %}
 
-        <div class="list-group-item">
-            <div class="row align-items-center">
-                <h4>出勤したい</h4>
-            </div>
-        </div>
+        <h4>出勤したい</h4>
         {% if alternative_not_changed_list %}
             {% for alternative in alternative_not_changed_list%}
                 <div class="list-group-item">
