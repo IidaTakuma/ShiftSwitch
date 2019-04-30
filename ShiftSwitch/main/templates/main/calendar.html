@@ -17,22 +17,18 @@
 <div class="tab-content">
   <div id="this_month" class="tab-pane list-group active">
     {% for day in weekends_thismonth %}
-      <a class="list-group-item text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
-        <div class="row align-items-center">
-          <span class="col-9">{{day.1}}/{{day.2}} {{day.3}}</span>
-          <span class="col-3 text-center">（{{ day | count_deficiency }}）</span>
-        </div>
+      <a class="list-group-item d-flex justify-content-between align-items-center text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
+        <span>{{day.1}}/{{day.2}} {{day.3}}</span>
+        <span class="text-center">{{ day | count_deficiency }}</span>
       </a>
     {% endfor %}
   </div>
   
   <div id="next_month" class="tab-pane list-group">
     {% for day in weekends_nextmonth %}
-      <a class="list-group-item text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
-        <div class="row align-items-center">
-          <span class="col-9">{{day.1}}/{{day.2}} {{day.3}}</span>
-          <span class="col-3 text-center">（{{ day | count_deficiency }}）</span>
-        </div>
+      <a class="list-group-item d-flex justify-content-between align-items-center text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
+          <span>{{day.1}}/{{day.2}} {{day.3}}</span>
+          <span class="text-center">{{ day | count_deficiency }}</span>
       </a>
 
     {% endfor %}
