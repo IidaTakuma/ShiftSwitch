@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
-
-{% block pagetitle %}
-    マイページ
-{% endblock %}
 {% block content %}
 <main class="col-12 col-lg-6 offset-lg-3">
+    <p>マイページ</p>
     <p>ユーザ名：{{ profile }}</p>
     <p>メンター名：{{user.mentor_name}}</p>
     <p>固定シフト：</p>

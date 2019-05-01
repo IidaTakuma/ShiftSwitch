@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load extra_tags %}
 {% block pagetitle %}
-  管理者ページ
+  <a style="color:black;" href="{% url 'main:managerCalender' %}">Shift Switch (Admin Mode)</a>
 {% endblock %}
 {% block menu %}
   <a href="{% url 'main:calender' %}">通常モード</a>
