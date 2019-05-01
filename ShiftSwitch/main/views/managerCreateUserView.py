@@ -2,8 +2,9 @@ from django.views.generic import CreateView
 from users.models import User
 from django.shortcuts import redirect
 from main.forms import CreateUserForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class CreateUserView(CreateView):
+class CreateUserView(LoginRequiredMixin, CreateView):
     model = User
     template_name = "main/managerCreateUser.html"
     form_class = CreateUserForm
