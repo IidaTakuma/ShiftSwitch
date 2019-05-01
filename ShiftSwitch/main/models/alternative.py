@@ -9,6 +9,9 @@ class Alternative(models.Model):
     comment = models.TextField(max_length=200, default="なし")
     is_settled = models.BooleanField(default=False)
 
+    def __str__(self):
+        return str(self.Alternative_user.mentor_name) + " " + str(self.date)
+
     def get_user_from_id(self):
         user = User.objects.get(id=self.Absence_user)
         return user
