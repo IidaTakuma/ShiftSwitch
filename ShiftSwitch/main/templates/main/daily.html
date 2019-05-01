@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
+<main class="col-sm-12 col-lg-6 offset-lg-3">
     <ul class="nav nav-tabs">
     <li class="nav-item col-6 text-center px-0">
         <a href="#absence" class="nav-link active" data-toggle="tab">代わって欲しい</a>
@@ -23,7 +23,7 @@
                         <span class="col-8">この日は既に欠席連絡をしています！</span>
                         <span class="col-4"><form action={% url 'main:deleteAbsence' ownAbsence.0.id %} method="post">
                             {% csrf_token %}
-                            <input type="submit" class="btn btn-danger shdbtn" value="取り消す">
+                            <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
                         </span></form>
                     </div>
                 </div>
@@ -40,17 +40,17 @@
                     <div class="row align-items-center">
                         <span class="col-4">{{absence.Absence_user.mentor_name}}</span>
                         {% if absence.shift_zone_judge_AM %}
-                            <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shdbtn">AM</button></span>
+                            <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                         {% else %}
                             <span class="col-2">--</span>
                         {% endif %}
                         {% if absence.shift_zone_judge_PM %}
-                            <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shdbtn">PM</button></span>
+                            <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
                         {% else %}
                             <span class="col-2">--</span>
                         {% endif %}
                         {% if absence.is_settled %}
-                            <span class="col-4 text-center"><button type="button" class="btn btn-success shdbtn" > 解決済！</button></span>
+                            <span class="col-4 text-center"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
                         {% else %}    
                             <span class="col-4 text-center"><form action={% url 'main:absenceChange' absence.id %} method="post">
                                 {% csrf_token %}
@@ -71,7 +71,7 @@
                         <span class="col-8">この日は既に出勤連絡をしています！</span>
                         <span class="col-4"><form action={% url 'main:deleteAlternative' ownAlternative.0.id %} method="post">
                             {% csrf_token %}
-                            <input type="submit" class="btn btn-danger shdbtn" value="取り消す">
+                            <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
                         </span></form>
                     </div>
                 </div>
@@ -88,21 +88,21 @@
                     <div class="row align-items-center">
                         <span class="col-4">{{alternative.Alternative_user.mentor_name}}</span>
                         {% if alternative.shift_zone_judge_AM %}
-                            <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shdbtn">AM</button></span>
+                            <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                         {% else %}
                             <span class="col-2">--</span>
                         {% endif %}
                         {% if alternative.shift_zone_judge_PM %}
-                            <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shdbtn">PM</button></span>
+                            <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
                         {% else %}
                             <span class="col-2">--</span>
                         {% endif %}
                         {% if alternative.is_settled %}
-                            <span class="col-4"><button type="button" class="btn btn-success shdbtn">解決済！</button></span>
+                            <span class="col-4"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
                         {% else %}
                             <span class="col-4"><form action={% url 'main:alternativeChange' alternative.id %} method="post">
                                 {% csrf_token %}
-                            <input type="submit" class="btn btn-warning shdbtn" value="代わる！">
+                            <input type="submit" class="btn btn-warning shadow-sm" value="代わる！">
                             </span></form>
                         {% endif %}
                     </div>
