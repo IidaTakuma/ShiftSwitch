@@ -31,7 +31,7 @@
             <div class="list-group-item">
                 <div class="row align-items-center justify-content-between container">
                     <span class="col-8">欠席連絡を追加する</span>
-                    <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
+                    <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light shadow-sm" style="border-radius: 50%;">+</a>
                 </div>
             </div>
             {% endif %}
@@ -79,7 +79,7 @@
                 <div class="list-group-item">
                     <div class="row align-items-center justify-content-between container">
                         <span class="col-8">出勤連絡を追加する</span>
-                        <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
+                        <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light shadow-sm" style="border-radius: 50%;">+</a>
                     </div>
                 </div>
             {% endif %}
