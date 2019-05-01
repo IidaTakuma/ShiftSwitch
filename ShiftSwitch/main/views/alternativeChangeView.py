@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.views.generic import View,DetailView
 from main.models import Alternative
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+
 
 class AlternativeChangeView(LoginRequiredMixin,View):
     model = Alternative
@@ -16,4 +18,6 @@ class AlternativeChangeView(LoginRequiredMixin,View):
         alternative.Absence_user = request.user.id
         alternative.is_settled = True
         alternative.save()
+        messages.info(self.request, f'{alternative.date}は{alternative.Alternative_user.mentor_name}さんに代わってもらいました')
+
         return redirect('main:calender')

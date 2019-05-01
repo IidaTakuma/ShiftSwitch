@@ -3,6 +3,8 @@ from django.views.generic import CreateView
 from main.models import Absence
 from main.forms.createForm import AbsenceCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+
 
 class AbsenceCreateView(LoginRequiredMixin,CreateView):
     model = Absence
@@ -39,5 +41,6 @@ class AbsenceCreateView(LoginRequiredMixin,CreateView):
         absence.Absence_user = request.user
         absence.date = self.get_date()
         absence.save()
+        messages.info(self.request, f'{absence.date}の欠席申請をしました。')
 
         return redirect(to = '/')

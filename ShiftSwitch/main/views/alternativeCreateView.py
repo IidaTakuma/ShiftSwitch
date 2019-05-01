@@ -3,6 +3,8 @@ from django.views.generic import CreateView
 from main.models import Alternative
 from main.forms.createForm import AlternativeCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+
 
 class AlternativeCreateView(LoginRequiredMixin,CreateView):
     model = Alternative
@@ -39,5 +41,6 @@ class AlternativeCreateView(LoginRequiredMixin,CreateView):
         alternative.Alternative_user = request.user
         alternative.date = self.get_date()
         alternative.save()
+        messages.info(self.request, f'{alternative.date}の出勤申請をしました。')
 
         return redirect(to = '/')
