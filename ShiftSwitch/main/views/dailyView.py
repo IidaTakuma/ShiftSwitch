@@ -34,4 +34,8 @@ class DailyView(LoginRequiredMixin,TemplateView):
         context['alternative_list'] = Alternative.objects.filter(date = _date).exclude(Alternative_user = _user)
         context['ownAbsence'] = Absence.objects.filter(date = _date, Absence_user = _user)
         context['ownAlternative'] = Alternative.objects.filter(date = _date, Alternative_user = _user)
+
+        context['ownAbsenceChange'] = Absence.objects.filter(date = _date, Alternative_user = _user.id)
+        context['ownAlternativeChange'] = Alternative.objects.filter(date = _date, Absence_user = _user.id)
+
         return context

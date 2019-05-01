@@ -18,8 +18,14 @@ class AlternativeChangeView(LoginRequiredMixin,View):
         alternative.Absence_user = request.user.id
         alternative.is_settled = True
         alternative.save()
-        
-        Absence.objects.filter(Absence_user=request.user.id).delete()
+
+        year = self.request.GET.get('y')
+        month = self.request.GET.get('m')
+        day = self.request.GET.get('d')
+        week = self.request.GET.get('w')
+        _date = str(year) + "-" + str(month) + "-" + str(day)
+
+        Absence.objects.filter(date=_date, Absence_user = self.request.user.id).delete()
 
         messages.info(self.request, f'{alternative.date}は{alternative.Alternative_user.mentor_name}さんに代わってもらいました')
 

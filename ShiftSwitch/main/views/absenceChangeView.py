@@ -19,7 +19,13 @@ class AbsenceChangeView(LoginRequiredMixin,View):
         absence.is_settled = True
         absence.save()
 
-        Alternative.objects.filter(Alternative_user=request.user.id).delete()
+        year = self.request.GET.get('y')
+        month = self.request.GET.get('m')
+        day = self.request.GET.get('d')
+        week = self.request.GET.get('w')
+        _date = str(year) + "-" + str(month) + "-" + str(day)
+
+        Alternative.objects.filter(date=_date, Alternative_user=self.request.user.id).delete()
 
         messages.info(self.request, f'{absence.date}は{absence.Absence_user.mentor_name}さんの代わりに出勤します')
 

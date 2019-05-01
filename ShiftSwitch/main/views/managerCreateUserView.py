@@ -11,7 +11,7 @@ class CreateUserView(LoginRequiredMixin, CreateView):
 
     def post(self, request, *args, **kwargs):
         _username = request.POST['username']
-        _mentor_name = request.POST['username']
+        _mentor_name = request.POST['mentor_name']
         _password = request.POST['password']
         
         user = User()

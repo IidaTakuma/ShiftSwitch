@@ -12,9 +12,10 @@ class Absence(models.Model):
     def __str__(self):
         return str(self.Absence_user.mentor_name) + " " + str(self.date)
 
-    def get_user_from_id(self):
+    def get_mentor_name_from_id(self):
         user = User.objects.get(id=self.Alternative_user)
-        return user
+        _mentor_name = user.mentor_name
+        return _mentor_name
 
     def shift_zone_judge_AM(self):
         _shift_zone = self.shift_zone
