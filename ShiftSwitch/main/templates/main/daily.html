@@ -23,13 +23,13 @@
                         <span class="col-8">この日は既に欠席連絡をしています！</span>
                         <span class="col-4"><form action={% url 'main:deleteAbsence' ownAbsence.0.id %} method="post">
                             {% csrf_token %}
-                            <input type="submit" class="btn btn-danger" value="取り消す">
+                            <input type="submit" class="btn btn-danger shdbtn" value="取り消す">
                         </span></form>
                     </div>
                 </div>
             {% else %}
             <div class="list-group-item">
-                <div class="row align-items-center">
+                <div class="row align-items-center justify-content-between container">
                     <span class="col-8">欠席連絡を追加する</span>
                     <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
                 </div>
@@ -71,13 +71,13 @@
                         <span class="col-8">この日は既に出勤連絡をしています！</span>
                         <span class="col-4"><form action={% url 'main:deleteAlternative' ownAlternative.0.id %} method="post">
                             {% csrf_token %}
-                            <input type="submit" class="btn btn-danger" value="取り消す">
+                            <input type="submit" class="btn btn-danger shdbtn" value="取り消す">
                         </span></form>
                     </div>
                 </div>
             {% else %}
                 <div class="list-group-item">
-                    <div class="row align-items-center">
+                    <div class="row align-items-center justify-content-between container">
                         <span class="col-8">出勤連絡を追加する</span>
                         <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
                     </div>

@@ -4,10 +4,9 @@
     マイページ
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <p>ユーザ名：{{ profile }}</p>
-        <p>メンター名：{{user.mentor_name}}</p>
-        <p>固定シフト：</p>
-    </div>
-
+<main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
+    <p>ユーザ名：{{ profile }}</p>
+    <p>メンター名：{{user.mentor_name}}</p>
+    <p>固定シフト：</p>
+</main>
 {% endblock %}

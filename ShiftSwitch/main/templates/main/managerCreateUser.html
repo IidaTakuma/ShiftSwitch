@@ -8,11 +8,11 @@
     
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <form method="post" class="form-horizontal">
-            {% csrf_token %}
-            {% include 'includes/form.html' %}
-            <button type="submit" class="btn btn-primary">ユーザを追加</button>
-        </form>
-    </div>
+<main class="px-0 col-sm-12 col-lg-6 offset-lg-3">
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% include 'includes/form.html' %}
+        <button type="submit" class="btn btn-primary">ユーザを追加</button>
+    </form>
+</main>
 {% endblock %}
