@@ -36,6 +36,19 @@
         </div>
       {% endblock %}
     </nav>
+    {% comment %} モーダル表示部分[開始] {% endcomment %}
+    {% if messages %}
+      <div class="container">
+          <div class="alert alert-primary" role="alert">
+              {% for message in messages %}
+              <p> {{ message }}</p>
+              {% endfor %}
+          </div>
+      </div>
+    {% endif %}
+    {% comment %} モーダル表示部分[終了] {% endcomment %}
+
+
     {% block content %}
     {% endblock %}
   {% endblock %}
