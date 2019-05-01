@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
-{% block pagetitle %}
-    <span class="col-3">欠席申請</span>
-    <span class="col-6">{{month}}月{{day}}日({{week}})</span>
-{% endblock %}
 {% block content %}
 <main class="col-12 col-lg-6 offset-lg-3">
+    <h5 class="container text-left my-3">
+        <span>欠席申請</span>
+        <span class="ml-3">{{month}}月{{day}}日({{week}})</span>
+    </h5>
     <form method="post" class="form-horizontal">
         {% csrf_token %}
         <div class='form-group'>
