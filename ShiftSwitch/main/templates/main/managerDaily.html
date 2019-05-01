@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
 {% block pagetitle %}
-    <span class="col-3">[管理者]</span>
-    <span class="col-6">{{month}}月{{day}}日({{week}})</span>
-    <span class="col-3">({{deficiency}})</span>
+    <span>[管理者]</span>
 {% endblock %}
 
 {% block menu %}
@@ -15,6 +13,10 @@
 
 {% block content %}
     <main class="col-12 col-lg-6 offset-lg-3">
+        <p class="container text-left">
+            <span>{{month}}月{{day}}日{{week}}</span>
+            <span>({{deficiency}})</span>
+        </p>
         {% comment %}交代確定(ここから){% endcomment %}
         <div class="card my-3">
             <div class="card-body">
