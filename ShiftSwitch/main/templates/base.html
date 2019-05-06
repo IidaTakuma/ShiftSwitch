@@ -40,7 +40,7 @@
     {% if messages %}
       <div class="container">
           <div class="alert alert-primary" role="alert">
-              <button onclick="modalDelete()">×</button>
+              <span id="delModal">×</span>
               {% for message in messages %}
               <p class="mb-0">
                 <span>{{ message }}</span>
