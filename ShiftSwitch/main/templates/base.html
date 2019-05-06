@@ -40,11 +40,11 @@
     {% if messages %}
       <div class="container">
           <div class="alert alert-primary" role="alert">
-            <div class="col-12 text-right">
-                <h5 id="delModal" class="font-weight-bold">×</h5>
+            <div class="col-12 text-right pr-0">
+                <h5 id="delModal" class="font-weight-bold text-muted">×</h5>
             </div>
               {% for message in messages %}
-              <p class="mb-0">
+              <p class="mb-0 container">
                 <span>{{ message }}</span>
               </p>
               {% endfor %}
