@@ -5,28 +5,17 @@ from main.forms.createForm import AlternativeCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
+from .methods import * #汎用なメソッド
+
 
 class AlternativeCreateView(LoginRequiredMixin,CreateView):
     model = Alternative
     template_name = "main/alternativeCreate.html"
     form_class = AlternativeCreateForm
 
-    def get_date(self):
-        year = self.request.GET.get('y')
-        month = self.request.GET.get('m')
-        day = self.request.GET.get('d')
-        _date = str(year) + "-" + str(month) + "-" + str(day)
-        return _date
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        month = self.request.GET.get('m')
-        day = self.request.GET.get('d')
-        week = self.request.GET.get('w')
-        
-        context["month"] = month
-        context["day"] = day
-        context["week"] = week
+        set_dateData_to_context(self, context)
 
         return context
 
@@ -39,7 +28,7 @@ class AlternativeCreateView(LoginRequiredMixin,CreateView):
         alternative.shift_zone = _shift_zone
         alternative.comment = _comment
         alternative.Alternative_user = request.user
-        alternative.date = self.get_date()
+        alternative.date = get_date(self)
         alternative.save()
         messages.info(self.request, f'{alternative.date}の出勤申請をしました。')
 

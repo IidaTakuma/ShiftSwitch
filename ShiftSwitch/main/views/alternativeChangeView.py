@@ -4,6 +4,8 @@ from main.models import Alternative, Absence
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
+from .methods import * #汎用なメソッド
+
 
 class AlternativeChangeView(LoginRequiredMixin,View):
     model = Alternative
@@ -19,11 +21,7 @@ class AlternativeChangeView(LoginRequiredMixin,View):
         alternative.is_settled = True
         alternative.save()
 
-        year = self.request.GET.get('y')
-        month = self.request.GET.get('m')
-        day = self.request.GET.get('d')
-        week = self.request.GET.get('w')
-        _date = str(year) + "-" + str(month) + "-" + str(day)
+        _date = get_date(object)
 
         Absence.objects.filter(date=_date, Absence_user = self.request.user.id).delete()
 

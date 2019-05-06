@@ -5,29 +5,17 @@ from main.forms.createForm import AbsenceCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 
+from .methods import *
+
 
 class AbsenceCreateView(LoginRequiredMixin,CreateView):
     model = Absence
     template_name = "main/absenceCreate.html"
     form_class = AbsenceCreateForm
 
-    def get_date(self):
-        year = self.request.GET.get('y')
-        month = self.request.GET.get('m')
-        day = self.request.GET.get('d')
-        _date = str(year) + "-" + str(month) + "-" + str(day)
-        return _date
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        month = self.request.GET.get('m')
-        day = self.request.GET.get('d')
-        week = self.request.GET.get('w')
-        
-        context["month"] = month
-        context["day"] = day
-        context["week"] = week
-
+        set_dateData_to_context(self, context)
         return context
 
     def post(self, request, *args, **kwargs):
@@ -39,7 +27,7 @@ class AbsenceCreateView(LoginRequiredMixin,CreateView):
         absence.shift_zone = _shift_zone
         absence.comment = _comment
         absence.Absence_user = request.user
-        absence.date = self.get_date()
+        absence.date = get_date(self)
         absence.save()
         messages.info(self.request, f'{absence.date}の欠席申請をしました。')
 

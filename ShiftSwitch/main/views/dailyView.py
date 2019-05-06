@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from main.models import Absence, Alternative
+from .methods import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
@@ -11,18 +12,8 @@ class DailyView(LoginRequiredMixin,TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        #日付を渡す部分[開始]
-        year = self.request.GET.get('y')
-        month = self.request.GET.get('m')
-        day = self.request.GET.get('d')
-        week = self.request.GET.get('w')
-        context["year"] = year
-        context["month"] = month
-        context["day"] = day
-        context["week"] = week
-        #日付を渡す部分[終了]
-        _date = str(year) + "-" + str(month) + "-" + str(day)
+        set_dateData_to_context(self, context)
+        _date = get_date(self)
         #過不足を渡す部分[開始]
         is_absence = Absence.objects.filter(date=_date,is_settled=False).count()
         is_alternative = Alternative.objects.filter(date=_date,is_settled=False).count()
