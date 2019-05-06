@@ -40,8 +40,11 @@
     {% if messages %}
       <div class="container">
           <div class="alert alert-primary" role="alert">
+              <button onclick="modalDelete()">×</button>
               {% for message in messages %}
-              <p class="mb-0"> {{ message }}</p>
+              <p class="mb-0">
+                <span>{{ message }}</span>
+              </p>
               {% endfor %}
           </div>
       </div>
