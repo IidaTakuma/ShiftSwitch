@@ -1,4 +1,4 @@
 $('#delModal').click(function () {
-  $(this).parent().parent().hide();
+  $(this).parents('.alert').hide();
   return false;
 });
