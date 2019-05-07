@@ -41,7 +41,9 @@
       <div class="container">
           <div class="alert alert-primary" role="alert">
             <div class="col-12 text-right pr-0">
-                <h5 id="delModal" class="font-weight-bold text-muted">×</h5>
+              <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true" id="delModal">&times;</span>
+            </button>
             </div>
               {% for message in messages %}
               <p class="mb-0 container">
