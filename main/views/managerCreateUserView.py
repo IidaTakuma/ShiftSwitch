@@ -10,13 +10,11 @@ class CreateUserView(LoginRequiredMixin, CreateView):
     form_class = CreateUserForm
 
     def post(self, request, *args, **kwargs):
-        _username = request.POST['username']
-        _mentor_name = request.POST['mentor_name']
-        _password = request.POST['password']
+        _username = "ユーザ名は設定されていません"
+        _password = "admin012"
         
         user = User()
         user.username = _username
-        user.mentor_name = _mentor_name
         user.set_password(_password)
         user.save()
         print(_username + "を作成しました")

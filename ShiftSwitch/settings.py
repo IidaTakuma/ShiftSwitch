@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'widget_tweaks',
-    'accounts.apps.AccountsConfig',
     'main.apps.MainConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
@@ -132,3 +131,13 @@ AUTH_USER_MODEL = 'users.User'
 
 LOGOUT_REDIRECT_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/'
+
+# メールを実際に送らず、コンソール画面へ表示する
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ta9madev'
+EMAIL_HOST_PASSWORD = 'admin012'
+EMAIL_USE_TLS = True
+
