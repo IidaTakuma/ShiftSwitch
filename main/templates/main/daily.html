@@ -53,7 +53,7 @@
                 {% for absence in absence_list %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-4">{{absence.Absence_user.mentor_name}}</span>
+                            <span class="col-4">{{absence.Absence_user.username}}</span>
                             {% if absence.shift_zone_judge_AM %}
                                 <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}
@@ -74,7 +74,7 @@
                 {% for absence in absence_list %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-4">{{absence.Absence_user.mentor_name}}</span>
+                            <span class="col-4">{{absence.Absence_user.username}}</span>
                             {% if absence.shift_zone_judge_AM %}
                                 <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}
@@ -138,7 +138,7 @@
                 {% for alternative in alternative_list %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-4">{{alternative.Alternative_user.mentor_name}}</span>
+                            <span class="col-4">{{alternative.Alternative_user.username}}</span>
                             {% if alternative.shift_zone_judge_AM %}
                                 <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}
@@ -159,7 +159,7 @@
                 {% for alternative in alternative_list %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-4">{{alternative.Alternative_user.mentor_name}}</span>
+                            <span class="col-4">{{alternative.Alternative_user.username}}</span>
                             {% if alternative.shift_zone_judge_AM %}
                                 <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}

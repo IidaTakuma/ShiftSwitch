@@ -12,7 +12,7 @@ class ManagerDailyView(LoginRequiredMixin,TemplateView):
         context = super().get_context_data(**kwargs)
         set_dateData_to_context(self, context)
         
-        _date = get_date(object)
+        _date = get_date(self)
 
         #過不足を渡す部分[開始]
         is_absence = Absence.objects.filter(date=_date).filter(is_settled=False).count()

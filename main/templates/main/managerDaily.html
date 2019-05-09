@@ -26,14 +26,14 @@
                         {% if absence_changed_list or alternative_changed_list %}
                             {% for absence in absence_changed_list %}
                                 <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{absence.Absence_user.mentor_name}}</span>
+                                    <span class="col-5 text-left">{{absence.Absence_user.username}}</span>
                                     <span class="col-2 text-center">→</span>
                                     <span class="col-5 text-right">{{absence.get_mentor_name_from_id}}</span>
                                 </div>
                             {% endfor %}
                             {% for alternative in alternative_changed_list %}
                                 <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{alternative.Alternative_user.mentor_name}}</span>
+                                    <span class="col-5 text-left">{{alternative.Alternative_user.username}}</span>
                                     <span class="col-2 text-center">→</span>
                                     <span class="col-5 text-right">{{alternative.get_mentor_name_from_id}}</span>
                                 </div>
@@ -58,7 +58,7 @@
                         {% if absence_not_changed_list %}
                             {% for absence in absence_not_changed_list%}
                                 <div class="row align-items-center">
-                                    <span>{{absence.Absence_user.mentor_name}}</span>
+                                    <span>{{absence.Absence_user.username}}</span>
                                 </div>
                             {% endfor %}
                         {% else %}
@@ -81,7 +81,7 @@
                             {% if alternative_not_changed_list %}
                                 {% for alternative in alternative_not_changed_list%}
                                     <div class="row align-items-center">
-                                        <span>{{alternative.Alternative_user.mentor_name}}</span>
+                                        <span>{{alternative.Alternative_user.username}}</span>
                                     </div>
                                 {% endfor %}
                             {% else %}
