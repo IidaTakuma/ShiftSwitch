@@ -25,7 +25,6 @@ $ cd ShiftSwitch
 $ pipenv install
 $ pipenv install django-widgets-improved
 $ pipenv shell
-$ cd ShiftSwitch
 $ python manage.py makemigrations
 $ python manage.py migrate
 ```
