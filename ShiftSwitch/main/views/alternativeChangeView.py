@@ -21,7 +21,7 @@ class AlternativeChangeView(LoginRequiredMixin,View):
         alternative.is_settled = True
         alternative.save()
 
-        _date = get_date(object)
+        _date = get_date(self)
 
         Absence.objects.filter(date=_date, Absence_user = self.request.user.id).delete()
 
