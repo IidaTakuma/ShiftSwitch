@@ -6,8 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib import messages
-from .models import User, Activate
-from django.contrib.auth.views import LoginView
+from users.models import User, Activate
 from django.views.generic import TemplateView
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -17,26 +16,25 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 User = get_user_model()
 
-class SignUpForm(UserCreationForm):
+# class SignUpForm(UserCreationForm):
 
-    class Meta:
-        model = User
-        fields = ('username', 'email',)
+#     class Meta:
+#         model = User
+#         fields = ('username', 'email',)
 
-def signup(request):
-    if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('/')
-    else:
-        form = SignUpForm()
-    return render(request, 'users/signup.html', {'form': form})
+# def signup(request):
+#     if request.method == 'POST':
+#         form = SignUpForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('/')
+#     else:
+#         form = SignUpForm()
+#     return render(request, 'users/signup.html', {'form': form})
 
 
-class OriginalLoginForm(LoginView):
-    template_name = 'users/login.html'
+
 
 # class RegisterForm(UserCreationForm):
 #     user

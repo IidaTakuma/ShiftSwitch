@@ -33,10 +33,7 @@ class CreateUserView(LoginRequiredMixin, CreateView):
 
         print(_username + "を作成しました")
         form = self.get_form()
-        # self.object = None
 
-        # user = form.save(commit=False)
-        # user.save()
         # activeモデルの作成と保存(userモデルとひも付く)
         # uuidを使ったランダムな文字列作成
         activate_key = create_key()

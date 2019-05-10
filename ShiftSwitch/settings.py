@@ -129,7 +129,9 @@ STATICFILES_DIRS = [
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGOUT_REDIRECT_URL = '/accounts/login'
+LOGIN_URL = 'users/login'
+
+LOGOUT_REDIRECT_URL = '/users/login'
 LOGIN_REDIRECT_URL = '/'
 
 # メールを実際に送らず、コンソール画面へ表示する
