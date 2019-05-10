@@ -1,0 +1,2 @@
+{{ user.email }} さん、以下から本登録して
+{{ protocol}}://{{ domain }}{% url 'users:create_complete' uidb64=uid %}
