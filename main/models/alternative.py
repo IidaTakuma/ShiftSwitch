@@ -14,7 +14,7 @@ class Alternative(models.Model):
 
     def get_mentor_name_from_id(self):
         user = User.objects.get(id=self.Absence_user)
-        _mentor_name = user.mentor_name
+        _mentor_name = user.username
         return _mentor_name
 
     def shift_zone_judge_AM(self):

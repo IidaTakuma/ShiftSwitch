@@ -16,5 +16,4 @@ urlpatterns = [
     path('mypage/',views.MyPageView.as_view(), name="mypage"),
     path('manager/calender/',views.ManagerCalenderView.as_view(), name="managerCalender"),
     path('manager/daily/',views.ManagerDailyView.as_view(), name="managerDaily"),
-    path('manager/createUser',views.CreateUserView.as_view(), name="createUser"),
 ]

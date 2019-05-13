@@ -25,6 +25,6 @@ class AlternativeChangeView(LoginRequiredMixin,View):
 
         Absence.objects.filter(date=_date, Absence_user = self.request.user.id).delete()
 
-        messages.info(self.request, f'{alternative.date}は{alternative.Alternative_user.mentor_name}さんに代わってもらいました')
+        messages.info(self.request, f'{alternative.date}は{alternative.Alternative_user.username}さんに代わってもらいました')
 
         return redirect('main:calender')
