@@ -92,9 +92,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-class Activate(models.Model):
-    """ 仮登録したユーザを本登録するためのModel """
+# class Activate(models.Model):
+#     """ 仮登録したユーザを本登録するためのModel """
   
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    key = models.CharField(max_length=255, unique=True)
-    expiration_date = models.DateTimeField(blank=True, null=True)
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     key = models.CharField(max_length=255, unique=True)
+#     expiration_date = models.DateTimeField(blank=True, null=True)

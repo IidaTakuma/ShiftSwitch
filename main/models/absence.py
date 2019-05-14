@@ -10,7 +10,7 @@ class Absence(models.Model):
     is_settled = models.BooleanField(default=False)
 
     def __str__(self):
-        return str(self.Absence_user.mentor_name) + " " + str(self.date)
+        return str(self.Absence_user.username) + " " + str(self.date)
 
     def get_mentor_name_from_id(self):
         user = User.objects.get(id=self.Alternative_user)
