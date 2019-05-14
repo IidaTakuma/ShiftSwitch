@@ -21,6 +21,12 @@ class UserManager(BaseUserManager):
         password."""
         if not email:
             raise ValueError('The given email must be set')
+
+        domain = email.split('@')
+        print(domain[1])
+        # if domain[1] not "ca-techkids.com":
+        #     raise ValueError('ドメインがca-techkids.comのものしか登録できません')
+
         email = self.normalize_email(email)
   
         user = self.model(email=email, **extra_fields)

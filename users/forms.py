@@ -28,4 +28,9 @@ class UsersRegistForm(UserCreationForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         User.objects.filter(email=email, is_active=False).delete()
+        print(email)
+        domain = email.split('@')
+        print(domain)
+        if domain[1] != "ca-techkids.com":
+            raise forms.ValidationError('ca-techkids.comのメールアドレスのみ登録できます')
         return email
