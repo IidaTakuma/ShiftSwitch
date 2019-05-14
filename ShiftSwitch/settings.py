@@ -135,11 +135,11 @@ LOGOUT_REDIRECT_URL = '/users/login'
 LOGIN_REDIRECT_URL = '/'
 
 # メールを実際に送らず、コンソール画面へ表示する
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
  
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'ta9madev'
-EMAIL_HOST_PASSWORD = 'admin012'
+EMAIL_HOST_PASSWORD = 'fldalnsdpafprlbx'
 EMAIL_USE_TLS = True
 
