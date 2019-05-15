@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wxfc(fgj4t$y236poqtt!!liz#ch@!#xtt3w8%pq+8zpqz1a%-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -143,3 +143,12 @@ EMAIL_HOST_USER = 'shiftswitchad'
 EMAIL_HOST_PASSWORD = 'lvbrlzzzkwgilapo'
 EMAIL_USE_TLS = True
 
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    import django_heroku
+    django_heroku.settings(locals())
