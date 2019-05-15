@@ -139,7 +139,7 @@ LOGIN_REDIRECT_URL = '/'
  
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'ta9madev'
-EMAIL_HOST_PASSWORD = 'fldalnsdpafprlbx'
+EMAIL_HOST_USER = 'shiftswitchad'
+EMAIL_HOST_PASSWORD = 'lvbrlzzzkwgilapo'
 EMAIL_USE_TLS = True
 
