@@ -6,6 +6,15 @@
             <span class="font-weight-bold">S</span>hift
             <span class="font-weight-bold">S</span>witch
         </h1>
+        {% if form.errors %}
+        <div class="container">
+            <div class="alert alert-primary" role="alert">
+                <div class="col-12 text-center pr-1">
+                    <p>メールアドレスまたはパスワードが違います</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
         <form method="post" class="form-horizontal container">
             {% csrf_token %}
             <div class='form-group'>
