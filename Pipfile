@@ -7,8 +7,11 @@ verify_ssl = true
 
 [packages]
 django = "*"
-widget-tweaks = "*"
 django-widgets-improved = "*"
+gunicorn = "*"
+django-heroku = "*"
+whitenoise = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"

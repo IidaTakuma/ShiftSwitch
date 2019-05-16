@@ -1,1 +1,1 @@
-web: gunicorn <your-project-name>.wsgi --log-file -
+web: gunicorn ShiftSwitch.wsgi --log-file -
