@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="col-12 col-lg-6 offset-lg-3">
+    <h5 class="container text-left my-3">
+        <span>{{month}}月{{day}}日{{week}}</span>
+        <span class="ml-3">({{deficiency}})</span>
+    </h5>
+    <ul class="nav nav-tabs pt-3">
+    <li class="nav-item col-6 text-center px-0">
+        <a href="#absence" class="nav-link active" data-toggle="tab">代わって欲しい</a>
+    </li>
+    <li class="nav-item col-6 text-center px-0">
+        <a href="#alternative" class="nav-link" data-toggle="tab">代わってあげる</a>
+    </li>
+    </ul>
+{% comment %} 代わって欲しいリスト[開始] {% endcomment %}
+    <div class="tab-content">
+        <div id="absence" class="tab-pane list-group active">
+            {% if ownAbsenceChange or ownAlternativeChange %}
+                <div class="list-group-item">
+                    <div class="row align-items-center">
+                        <span class="col-8">この日は既に交代しています！</span>
+                    </div>
+                </div>
+            {% else %}
+                {% if ownAbsence %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-8">この日は既に欠席連絡をしています！</span>
+                            <span class="col-4"><form action="{% url 'main:deleteAbsence' ownAbsence.0.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
+                            </span></form>
+                        </div>
+                    </div>
+                {% elif ownAlternative %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-8">出勤申請を出しています！</span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center justify-content-between container">
+                            <span class="col-8">欠席連絡を追加する</span>
+                            <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if ownAbsence or ownAlternativeChange %}
+                {% for absence in absence_list %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-4">{{absence.Absence_user.username}}</span>
+                            {% if absence.shift_zone_judge_AM %}
+                                <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if absence.shift_zone_judge_PM %}
+                                <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if absence.is_settled %}
+                                <span class="col-4 text-center"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for absence in absence_list %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-4">{{absence.Absence_user.username}}</span>
+                            {% if absence.shift_zone_judge_AM %}
+                                <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if absence.shift_zone_judge_PM %}
+                                <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if absence.is_settled %}
+                                <span class="col-4 text-center"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
+                            {% else %}    
+                                <span class="col-4 text-center"><form action="{% url 'main:absenceChange' absence.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-warning shdbtn" value="代わる！">
+                                </form></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% comment %} 代わって欲しいリスト[終了] {% endcomment %}
+
+    {% comment %} 代わってあげるリスト[開始] {% endcomment %}
+        <div id="alternative" class="tab-pane list-group">
+            {% if ownAbsenceChange or ownAlternativeChange %}
+                <div class="list-group-item">
+                    <div class="row align-items-center">
+                        <span class="col-8">この日は既に交代しています！</span>
+                    </div>
+                </div>
+            {% else %}
+                {% if ownAlternative %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-8">この日は既に出勤連絡をしています！</span>
+                            <span class="col-4"><form action="{% url 'main:deleteAlternative' ownAlternative.0.id %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
+                            </form></span>
+                        </div>
+                    </div>
+                {% elif ownAbsence %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-8">欠席申請を出しています！</span>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center justify-content-between container">
+                            <span class="col-8">出勤連絡を追加する</span>
+                            <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            {% if ownAlternative or ownAbsenceChange %}
+                {% for alternative in alternative_list %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-4">{{alternative.Alternative_user.username}}</span>
+                            {% if alternative.shift_zone_judge_AM %}
+                                <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if alternative.shift_zone_judge_PM %}
+                                <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if alternative.is_settled %}
+                                <span class="col-4"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for alternative in alternative_list %}
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <span class="col-4">{{alternative.Alternative_user.username}}</span>
+                            {% if alternative.shift_zone_judge_AM %}
+                                <span class="col-2"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if alternative.shift_zone_judge_PM %}
+                                <span class="col-2"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                            {% else %}
+                                <span class="col-2">--</span>
+                            {% endif %}
+                            {% if alternative.is_settled %}
+                                <span class="col-4"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
+                            {% else %}
+                                <span class="col-4"><form action="{% url 'main:alternativeChange' alternative.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
+                                    {% csrf_token %}
+                                <input type="submit" class="btn btn-warning shadow-sm" value="代わる！">
+                                </span></form>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% comment %} 代わってあげるリスト[終了] {% endcomment %}
+    </div>
+    </main>
+{% endblock %}
+
+{% comment %} <span><button type="button" class="btn btn-success" onclick="location.href="{% url 'main:addalternative' absence.id %}"">代わる</button></span> {% endcomment %}
+
