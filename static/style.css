@@ -7,6 +7,10 @@ a, a:hover, a:active {
   -webkit-user-select: none;
 }
 
+main {
+  overflow-y:scroll;
+}
+
 footer {
   position:absolute!important;
   bottom: 0!important;
