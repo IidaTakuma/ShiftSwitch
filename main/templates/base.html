@@ -19,7 +19,7 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 container-fluid">
   {% block body %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light row justify-content-between">
       <h2 class="navbar-brand col-3">{% block pagetitle %}<a style="color:black;" href="{% url 'main:calender' %}">Shift Switch</a>{% endblock %}</h2>
