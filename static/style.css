@@ -1,3 +1,7 @@
+html, body{
+  width:100%!IMPORTANT;
+  height:100%!IMPORTANT;
+}
 a, a:hover, a:active {
   text-decoration: none;
 }
