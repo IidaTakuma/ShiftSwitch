@@ -8,7 +8,7 @@ Creation Date   : Apr 22, 2019
 Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
 ======================================================
 -->
-<html lang="ja" class="h-100 overflow-hidden">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=devive-width, initial-scale=1">
@@ -19,7 +19,7 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="d-flex flex-column h-100">
+<body>
   {% block body %}
     <nav class="sticky-top navbar navbar-expand-lg navbar-light bg-light">
       <h2 class="navbar-brand col-3">{% block pagetitle %}<a style="color:black;" href="{% url 'main:calender' %}">Shift Switch</a>{% endblock %}</h2>
@@ -68,7 +68,7 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
     {% endif %}
     {% comment %} モーダル表示部分[終了] {% endcomment %}
 
-  <main class="flex-grow-1 col-12 col-lg-6 offset-lg-3 py-3" style="overflow-x:hidden; overflow-y:scroll;">
+  <main class="col-12 col-lg-6 offset-lg-3 py-3" style="overflow-x:hidden; overflow-y:scroll;">
     {% block content %}
     {% endblock %}
   </main>
