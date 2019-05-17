@@ -3,13 +3,13 @@ from . import views
 from .views import *
 from users import views
 from django.contrib.auth import views as auth_views
-from users.views import OriginalLoginForm
+from users.views import CustomLoginView
 
 app_name='users'
 
 urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('login/', OriginalLoginForm.as_view(), name='login'),
+    path('login/', CustomLoginView.as_view(), name='login'),
 
     path('regist/', UsersRegistView.as_view(), name='regist'),
     path('regist_done/', UsersRegistDone.as_view(), name='regist_done'),

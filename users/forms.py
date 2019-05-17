@@ -7,6 +7,9 @@ from main.models import User
 
 class LoginForm(AuthenticationForm):
     """ログインフォーム"""
+    class Meta:
+        model = User
+        fields = ('email', 'password')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
