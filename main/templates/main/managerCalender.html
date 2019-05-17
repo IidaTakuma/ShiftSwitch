@@ -7,8 +7,6 @@
   <a href="{% url 'main:calender' %}">通常モード</a>
 {% endblock %}
 {% block content %}
-{% comment %} [hidaka]switch month {% endcomment %}
-<main class="col-12 col-lg-6 offset-lg-3">
 <ul class="nav nav-tabs pt-3">
   <li class="nav-item col-6 text-center px-0">
     <a href="#this_month" class="nav-link active" data-toggle="tab">今月</a>
@@ -40,5 +38,4 @@
     {% endfor %}
   </div>
 </div>
-</main>
 {% endblock %}
