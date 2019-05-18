@@ -6,7 +6,6 @@ $('#delModal').click(function () {
 /* モーダル非表示(ここまで) */
 
 /* フッター固定(ここから) */
-/*
 let page_size = {
   w : $(window).width()
  ,h : $(window).height()
@@ -20,5 +19,4 @@ if(page_size.h > browser_size.h) {
   $('footer').css('bottom', '0px');
   $('footer').css('width', '100%'); /* 必要なら */
 }
-*/
 /* フッター固定(ここまで) */
