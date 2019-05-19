@@ -5,11 +5,11 @@ html, body{
 a, a:hover, a:active {
   text-decoration: none;
 }
-*:not(.fm) {
+/* *:not() {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-}
+} */
 
 main {
   overflow-y:scroll;
