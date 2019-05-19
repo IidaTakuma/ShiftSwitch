@@ -5,7 +5,7 @@ html, body{
 a, a:hover, a:active {
   text-decoration: none;
 }
-*:not(form) {
+*:not(.fm) {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
