@@ -9,13 +9,19 @@
     <a href="#next_month" class="nav-link" data-toggle="tab">来月</a>
   </li>
 </ul>
-{% comment %} [hidaka]end switch month {% endcomment %}
+
 
 {% comment %} weekend:(年,月,日,曜日) {% endcomment %}
 <div class="tab-content">
   <div id="this_month" class="tab-pane list-group active">
     {% for day in weekends_thismonth %}
-      <a class="list-group-item d-flex justify-content-between align-items-center text-dark" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
+      {% comment %} day2の中身がSatなら青文字,でないなら赤文字 {% endcomment %}
+      {% if day.2 == Sat %}
+      <a class="list-group-item d-flex justify-content-between align-items-center {{ day.2|yesno:'text-primary,text-danger,text-dark' }}" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
+      {% endif %}
+      {% comment %} day2空なら黒文字 {% endcomment %}
+      {% endif %}
+      {% endif %}
         <span>{{day.1}}/{{day.2}} {{day.3}}</span>
         <span class="badge badge-primary badge-pill">{{ day | count_deficiency }}</span>
       </a>
