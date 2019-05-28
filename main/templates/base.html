@@ -23,9 +23,11 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
   {% block body %}
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     {% block pagetitle %}
       <a style="color:black;" href="{% url 'main:calender' %}">
         <h2 class="navbar-brand col-3 m-0">ShiftSwitch</h2>
       </a>
+     {% endblock %}
       <!--
       <h2 class="navbar-brand col-3 m-0">{% block pagetitle %}<a style="color:black;" href="{% url 'main:calender' %}">Shift Switch</a>{% endblock %}</h2>
       -->
