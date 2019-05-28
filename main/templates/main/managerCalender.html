@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load extra_tags %}
 {% block pagetitle %}
-  <a style="color:black;" href="{% url 'main:managerCalender' %}">Shift Switch (Admin Mode)</a>
+  <a style="color:black;" href="{% url 'main:managerCalender' %}">
+    <h2 class="navbar-brand col-3 m-0">Shift Switch (Admin Mode)</h2>
+  </a>
 {% endblock %}
 {% block menu %}
   <a href="{% url 'main:calender' %}">通常モード</a>
