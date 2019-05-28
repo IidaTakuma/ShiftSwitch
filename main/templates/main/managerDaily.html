@@ -15,9 +15,8 @@
         </h5>
         {% comment %}交代確定(ここから){% endcomment %}
         <div class="card my-3">
+          <div class="card-header">交代が決まった</div>
             <div class="card-body">
-                <h5 class="card-title">交代が決まった</h5>
-                <div class="card-text">
                     <div class="list-group-item">
                         {% if absence_changed_list or alternative_changed_list %}
                             {% for absence in absence_changed_list %}
@@ -47,9 +46,8 @@
         
         {% comment %}欠席希望(ここから){% endcomment %}
         <div class="card my-3">
+          <div class="card-header">欠席したい</div>
             <div class="card-body">
-                <h5 class="card-title">欠席したい</h5>
-                <div class="card-text">
                     <div class="list-group-item">
                         {% if absence_not_changed_list %}
                             {% for absence in absence_not_changed_list%}
@@ -70,9 +68,8 @@
         
         {% comment %}出勤希望(ここから){% endcomment %}
         <div class="card my-3">
+          <div class="card-header">出勤したい</div>
             <div class="card-body">
-                <h5 class="card-title">出勤したい</h5>
-                <div class="card-text">
                     <div class="list-group-item">
                             {% if alternative_not_changed_list %}
                                 {% for alternative in alternative_not_changed_list%}
