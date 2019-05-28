@@ -26,9 +26,6 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
      {% block pagetitle %}
       <a class="navbar-brand m-0 text-body" href="{% url 'main:calender' %}">ShiftSwitch</a>
      {% endblock %}
-      <!--
-      <h2 class="navbar-brand col-3 m-0">{% block pagetitle %}<a style="color:black;" href="{% url 'main:calender' %}">Shift Switch</a>{% endblock %}</h2>
-      -->
       {% block tabButton %}
         <button class="navbar-toggler mx-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -56,9 +53,9 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
       {% endblock %}
     </nav>
   </header>
+  <main class="col-12 col-lg-6 mx-auto p-3">
     {% comment %} モーダル表示部分[開始] {% endcomment %}
     {% if messages %}
-      <div class="container">
           <div class="alert alert-primary" role="alert">
             <div class="col-12 text-right pr-0">
               <button type="button" class="close" aria-label="Close">
@@ -71,11 +68,8 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
               </p>
               {% endfor %}
           </div>
-      </div>
     {% endif %}
     {% comment %} モーダル表示部分[終了] {% endcomment %}
-
-  <main class="col-12 col-lg-6 mx-auto p-3">
     {% block content %}
     {% endblock %}
   </main>

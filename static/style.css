@@ -27,9 +27,9 @@ main {
 
 /* タブの色変化(モバイルのみ)*/
 @media (max-width: 575px), (max-width: 767px){
-  a.nav-link.active.show {
-    background-color: #0062cc;
-    color: white;
+  a.nav-link.active{
+    background-color: #0062cc!IMPORTANT;
+    color: #ffffff!IMPORTANT;
   }
   a.nav-link {
     background-color: #e8f3ff;
