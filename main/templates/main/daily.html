@@ -25,9 +25,9 @@
             {% else %}
                 {% if ownAbsence %}
                     <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-8">この日は既に欠席連絡をしています！</span>
-                            <span class="col-4"><form action="{% url 'main:deleteAbsence' ownAbsence.0.id %}" method="post">
+                        <div class="row align-items-center text-center">
+                            <span class="col-12">この日は既に欠席連絡をしています！</span>
+                            <span class="col-12 py-3"><form action="{% url 'main:deleteAbsence' ownAbsence.0.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
                             </span></form>
@@ -36,7 +36,7 @@
                 {% elif ownAlternative %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-8">出勤申請を出しています！</span>
+                            <span class="col-12">出勤申請を出しています！</span>
                         </div>
                     </div>
                 {% else %}
