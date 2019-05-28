@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h5 class="container text-left my-3">
+    <h5 class="container text-left mx-0 my-3">
         <span>{{month}}月{{day}}日{{week}}</span>
         <span class="ml-3">({{deficiency}})</span>
     </h5>
@@ -41,10 +41,10 @@
                     </div>
                 {% else %}
                     <div class="list-group-item">
-                        <div class="row align-items-center justify-content-between container m-0 p-0">
+                        <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="row align-items-center justify-content-between container m-0 p-0 text-dark">
                             <span>欠席連絡を追加する</span>
-                            <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
-                        </div>
+                            <span class="btn btn-light" style="border-radius: 50%;">+</span>
+                        </a>
                     </div>
                 {% endif %}
             {% endif %}
@@ -126,10 +126,10 @@
                     </div>
                 {% else %}
                     <div class="list-group-item">
-                        <div class="row align-items-center justify-content-between container m-0 p-0">
+                        <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="row align-items-center justify-content-between container m-0 p-0 text-dark">
                             <span>出勤連絡を追加する</span>
-                            <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
-                        </div>
+                            <span class="btn btn-light" style="border-radius: 50%;">+</span>
+                        </a>
                     </div>
                 {% endif %}
             {% endif %}
