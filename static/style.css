@@ -12,10 +12,12 @@ a, a:hover, a:active {
 }
 
 /* 縦方向のみスクロールを有効に */
+/*
 main {
   overflow-x: hidden!IMPORTANT;
   overflow-y: scroll!IMPORTANT;
 }
+*/
 
 /* ボタンの影 */
 .shadow-sm{
