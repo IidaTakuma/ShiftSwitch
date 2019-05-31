@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block pagetitle %}
-    <a style="color:black;" href="{% url 'main:managerCalender' %}">Shift Switch (Admin Mode)</a>
+  <a class="navbar-brand m-0 text-body" href="{% url 'main:managerCalender' %}">ShiftSwitch (Admin Mode)</a>
 {% endblock %}
 
 {% block menu %}
@@ -9,15 +9,14 @@
 {% endblock %}
 
 {% block content %}
-        <h5 class="container text-left my-3">
+        <h5 class="container text-left mx-0 my-3">
             <span>{{month}}月{{day}}日{{week}}</span>
             <span class="ml-3">({{deficiency}})</span>
         </h5>
         {% comment %}交代確定(ここから){% endcomment %}
         <div class="card my-3">
+          <div class="card-header">交代が決まった</div>
             <div class="card-body">
-                <h5 class="card-title">交代が決まった</h5>
-                <div class="card-text">
                     <div class="list-group-item">
                         {% if absence_changed_list or alternative_changed_list %}
                             {% for absence in absence_changed_list %}
@@ -47,9 +46,8 @@
         
         {% comment %}欠席希望(ここから){% endcomment %}
         <div class="card my-3">
+          <div class="card-header">欠席したい</div>
             <div class="card-body">
-                <h5 class="card-title">欠席したい</h5>
-                <div class="card-text">
                     <div class="list-group-item">
                         {% if absence_not_changed_list %}
                             {% for absence in absence_not_changed_list%}
@@ -70,9 +68,8 @@
         
         {% comment %}出勤希望(ここから){% endcomment %}
         <div class="card my-3">
+          <div class="card-header">出勤したい</div>
             <div class="card-body">
-                <h5 class="card-title">出勤したい</h5>
-                <div class="card-text">
                     <div class="list-group-item">
                             {% if alternative_not_changed_list %}
                                 {% for alternative in alternative_not_changed_list%}

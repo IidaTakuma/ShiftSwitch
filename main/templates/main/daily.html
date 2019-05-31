@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h5 class="container text-left my-3">
+    <h5 class="container text-left mx-0 my-3">
         <span>{{month}}月{{day}}日{{week}}</span>
         <span class="ml-3">({{deficiency}})</span>
     </h5>
-    <ul class="nav nav-tabs pt-3">
-    <li class="nav-item col-6 text-center px-0">
+    <ul class="nav nav-tabs">
+    <li class="nav-item col text-center px-0">
         <a href="#absence" class="nav-link active" data-toggle="tab">代わって欲しい</a>
     </li>
-    <li class="nav-item col-6 text-center px-0">
+    <li class="nav-item col text-center px-0">
         <a href="#alternative" class="nav-link" data-toggle="tab">代わってあげる</a>
     </li>
     </ul>
 {% comment %} 代わって欲しいリスト[開始] {% endcomment %}
-    <div class="tab-content">
+    <div class="tab-content mb-5">
         <div id="absence" class="tab-pane list-group active">
             {% if ownAbsenceChange or ownAlternativeChange %}
                 <div class="list-group-item">
@@ -25,9 +25,9 @@
             {% else %}
                 {% if ownAbsence %}
                     <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-8">この日は既に欠席連絡をしています！</span>
-                            <span class="col-4"><form action="{% url 'main:deleteAbsence' ownAbsence.0.id %}" method="post">
+                        <div class="row align-items-center text-center">
+                            <span class="col-12">この日は既に欠席連絡をしています！</span>
+                            <span class="col-12 py-3"><form action="{% url 'main:deleteAbsence' ownAbsence.0.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
                             </span></form>
@@ -36,15 +36,15 @@
                 {% elif ownAlternative %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-8">出勤申請を出しています！</span>
+                            <span class="col-12">出勤申請を出しています！</span>
                         </div>
                     </div>
                 {% else %}
                     <div class="list-group-item">
-                        <div class="row align-items-center justify-content-between container">
-                            <span class="col-8">欠席連絡を追加する</span>
-                            <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
-                        </div>
+                        <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="row align-items-center justify-content-between container m-0 p-0 text-dark">
+                            <span>欠席連絡を追加する</span>
+                            <span class="btn btn-light" style="border-radius: 50%;">+</span>
+                        </a>
                     </div>
                 {% endif %}
             {% endif %}
@@ -110,9 +110,9 @@
             {% else %}
                 {% if ownAlternative %}
                     <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-8">この日は既に出勤連絡をしています！</span>
-                            <span class="col-4"><form action="{% url 'main:deleteAlternative' ownAlternative.0.id %}" method="post">
+                        <div class="row align-items-center text-center">
+                            <span class="col-12">この日は既に出勤連絡をしています！</span>
+                            <span class="col-12 py-3"><form action="{% url 'main:deleteAlternative' ownAlternative.0.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
                             </form></span>
@@ -121,15 +121,15 @@
                 {% elif ownAbsence %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-8">欠席申請を出しています！</span>
+                            <span class="col-12">欠席申請を出しています！</span>
                         </div>
                     </div>
                 {% else %}
                     <div class="list-group-item">
-                        <div class="row align-items-center justify-content-between container">
-                            <span class="col-8">出勤連絡を追加する</span>
-                            <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="btn btn-light" style="border-radius: 50%;">+</a>
-                        </div>
+                        <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="row align-items-center justify-content-between container m-0 p-0 text-dark">
+                            <span>出勤連絡を追加する</span>
+                            <span class="btn btn-light" style="border-radius: 50%;">+</span>
+                        </a>
                     </div>
                 {% endif %}
             {% endif %}

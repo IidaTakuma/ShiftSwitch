@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load extra_tags %}
 {% block content %}
-<ul class="nav nav-tabs pt-3">
-  <li class="nav-item col-6 text-center px-0">
+<ul class="nav nav-tabs">
+  <li class="nav-item col text-center px-0">
     <a href="#this_month" class="nav-link active" data-toggle="tab">今月</a>
   </li>
-  <li class="nav-item col-6 text-center px-0">
+  <li class="nav-item col text-center px-0">
     <a href="#next_month" class="nav-link" data-toggle="tab">来月</a>
   </li>
 </ul>
 
 
 {% comment %} weekend:(年,月,日,曜日) {% endcomment %}
-<div class="tab-content">
+<div class="tab-content mb-5">
   <div id="this_month" class="tab-pane list-group active">
     {% for day in weekends_thismonth %}
       <a class="list-group-item d-flex justify-content-between align-items-center" href="{% url 'main:daily' %}?y={{day.0}}&m={{day.1}}&d={{day.2}}&w={{day.3}}">
