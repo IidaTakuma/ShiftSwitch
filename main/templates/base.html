@@ -19,9 +19,9 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
+<body class="d-flex flex-column">
   {% block body %}
-  <header class="sticky-top">
+  <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
      {% block pagetitle %}
       <a class="navbar-brand m-0 text-body" href="{% url 'main:calender' %}">ShiftSwitch</a>
@@ -53,7 +53,7 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
       {% endblock %}
     </nav>
   </header>
-  <main class="col-12 col-lg-6 mx-auto p-3">
+  <main class="col-12 col-lg-6 mx-auto p-3 flex-fill">
     {% comment %} モーダル表示部分[開始] {% endcomment %}
     {% if messages %}
           <div class="alert alert-primary" role="alert">
@@ -74,7 +74,7 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
     {% endblock %}
   </main>
   {% endblock %}
-  <footer class="footer fixed-bottom text-center container-fluid bg-light py-2">
+  <footer class="footer text-center container-fluid bg-light py-2">
     <p class="text-black-50 m-0">
       <span>&copy; 2019</span>
       <a class="text-black-50" href="https://github.com/IidaTakuma">Takuma Iida</a>
