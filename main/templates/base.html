@@ -53,9 +53,9 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
       {% endblock %}
     </nav>
   </header>
+  <main class="col-12 col-lg-6 mx-auto p-3">
     {% comment %} モーダル表示部分[開始] {% endcomment %}
     {% if messages %}
-      <div class="container">
           <div class="alert alert-primary" role="alert">
             <div class="col-12 text-right pr-0">
               <button type="button" class="close" aria-label="Close">
@@ -68,11 +68,8 @@ Copyright © 2019 TakumaIida and RyoHidaka. All rights reserved.
               </p>
               {% endfor %}
           </div>
-      </div>
     {% endif %}
     {% comment %} モーダル表示部分[終了] {% endcomment %}
-
-  <main class="col-12 col-lg-6 mx-auto p-3">
     {% block content %}
     {% endblock %}
   </main>
