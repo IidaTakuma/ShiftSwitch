@@ -7,10 +7,10 @@
     </h5>
     <ul class="nav nav-tabs">
     <li class="nav-item col text-center px-0">
-        <a href="#absence" class="nav-link active" data-toggle="tab">代わって欲しい</a>
+        <a href="#absence" class="nav-link active" data-toggle="tab">欠勤申請一覧</a>
     </li>
     <li class="nav-item col text-center px-0">
-        <a href="#alternative" class="nav-link" data-toggle="tab">代わってあげる</a>
+        <a href="#alternative" class="nav-link" data-toggle="tab">出勤申請一覧</a>
     </li>
     </ul>
 {% comment %} 代わって欲しいリスト[開始] {% endcomment %}
@@ -26,7 +26,7 @@
                 {% if ownAbsence %}
                     <div class="list-group-item">
                         <div class="row align-items-center text-center">
-                            <span class="col-12">この日は既に欠席連絡をしています！</span>
+                            <span class="col-12">この日は既に欠勤申請をしています！</span>
                             <span class="col-12 py-3"><form action="{% url 'main:deleteAbsence' ownAbsence.0.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
@@ -42,7 +42,7 @@
                 {% else %}
                     <div class="list-group-item">
                         <a href="{% url 'main:absenceCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="row align-items-center justify-content-between container m-0 p-0 text-dark">
-                            <span>欠席連絡を追加する</span>
+                            <span>欠勤申請を追加する</span>
                             <span class="btn btn-light" style="border-radius: 50%;">+</span>
                         </a>
                     </div>
@@ -111,7 +111,7 @@
                 {% if ownAlternative %}
                     <div class="list-group-item">
                         <div class="row align-items-center text-center">
-                            <span class="col-12">この日は既に出勤連絡をしています！</span>
+                            <span class="col-12">この日は既に出勤申請をしています！</span>
                             <span class="col-12 py-3"><form action="{% url 'main:deleteAlternative' ownAlternative.0.id %}" method="post">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger shadow-sm" value="取り消す">
@@ -121,13 +121,13 @@
                 {% elif ownAbsence %}
                     <div class="list-group-item">
                         <div class="row align-items-center">
-                            <span class="col-12">欠席申請を出しています！</span>
+                            <span class="col-12">欠勤申請を出しています！</span>
                         </div>
                     </div>
                 {% else %}
                     <div class="list-group-item">
                         <a href="{% url 'main:alternativeCreate' %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" class="row align-items-center justify-content-between container m-0 p-0 text-dark">
-                            <span>出勤連絡を追加する</span>
+                            <span>出勤申請を追加する</span>
                             <span class="btn btn-light" style="border-radius: 50%;">+</span>
                         </a>
                     </div>
