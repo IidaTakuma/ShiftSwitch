@@ -75,19 +75,19 @@
                         <div class="row align-items-center">
                             <span class="col-4 p-0">{{absence.Absence_user.username}}</span>
                             {% if absence.shift_zone_judge_AM %}
-                                <span class="col-2 p-0"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                                <span class="col-2 p-0 overflow-hidden"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}
-                                <span class="col-2 p-0">--</span>
+                                <span class="col-2 p-0 overflow-hidden">--</span>
                             {% endif %}
                             {% if absence.shift_zone_judge_PM %}
-                                <span class="col-2 p-0"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                                <span class="col-2 p-0 overflow-hidden"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
                             {% else %}
-                                <span class="col-2 p-0">--</span>
+                                <span class="col-2 p-0 overflow-hidden">--</span>
                             {% endif %}
                             {% if absence.is_settled %}
-                                <span class="col-4 text-center p-0"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
+                                <span class="col-4 text-center p-0 overflow-hidden"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
                             {% else %}    
-                                <span class="col-4 text-center p-0"><form action="{% url 'main:absenceChange' absence.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
+                                <span class="col-4 text-center p-0 overflow-hidden"><form action="{% url 'main:absenceChange' absence.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
                                     {% csrf_token %}
                                     <input type="submit" class="btn btn-warning shdbtn" value="代わる！">
                                 </form></span>
@@ -139,17 +139,17 @@
                         <div class="row align-items-center">
                             <span class="col-4 p-0">{{alternative.Alternative_user.username}}</span>
                             {% if alternative.shift_zone_judge_AM %}
-                                <span class="col-2 p-0"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                                <span class="col-2 p-0 overflow-hidden"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}
-                                <span class="col-2 p-0">--</span>
+                                <span class="col-2 p-0 overflow-hidden">--</span>
                             {% endif %}
                             {% if alternative.shift_zone_judge_PM %}
-                                <span class="col-2 p-0"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                                <span class="col-2 p-0 overflow-hidden"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
                             {% else %}
-                                <span class="col-2 p-0">--</span>
+                                <span class="col-2 p-0 overflow-hidden">--</span>
                             {% endif %}
                             {% if alternative.is_settled %}
-                                <span class="col-4 p-0"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
+                                <span class="col-4 p-0 overflow-hidden"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
                             {% endif %}
                         </div>
                     </div>
@@ -160,19 +160,19 @@
                         <div class="row align-items-center">
                             <span class="col-4">{{alternative.Alternative_user.username}}</span>
                             {% if alternative.shift_zone_judge_AM %}
-                                <span class="col-2 p-0"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                                <span class="col-2 p-0 overflow-hidden"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
                             {% else %}
-                                <span class="col-2 p-0">--</span>
+                                <span class="col-2 p-0 overflow-hidden">--</span>
                             {% endif %}
                             {% if alternative.shift_zone_judge_PM %}
-                                <span class="col-2 p-0"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                                <span class="col-2 p-0 overflow-hidden"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
                             {% else %}
-                                <span class="col-2 p-0">--</span>
+                                <span class="col-2 p-0 overflow-hidden">--</span>
                             {% endif %}
                             {% if alternative.is_settled %}
-                                <span class="col-4 p-0"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
+                                <span class="col-4 p-0 overflow-hidden"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
                             {% else %}
-                                <span class="col-4 p-0"><form action="{% url 'main:alternativeChange' alternative.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
+                                <span class="col-4 p-0 overflow-hidden"><form action="{% url 'main:alternativeChange' alternative.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
                                     {% csrf_token %}
                                 <input type="submit" class="btn btn-warning shadow-sm" value="代わる！">
                                 </span></form>
