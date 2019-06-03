@@ -20,10 +20,18 @@ class ManagerDailyView(LoginRequiredMixin,TemplateView):
         context["deficiency"] = is_alternative - is_absence
         #過不足を渡す部分[終了]
 
-        context['absence_changed_list'] = Absence.objects.filter(date = _date).filter(is_settled = True)
-        context['alternative_changed_list'] = Alternative.objects.filter(date = _date).filter(is_settled = True)
-        context['absence_not_changed_list'] = Absence.objects.filter(date=_date).filter(is_settled = False)
-        context['alternative_not_changed_list'] = Alternative.objects.filter(date=_date).filter(is_settled = False)
+        context['absence_changed_list_AM'] = Absence.objects.filter(date = _date).filter(shift_zone = "AM").filter(is_settled = True)
+        context['absence_changed_list_PM'] = Absence.objects.filter(date = _date).filter(shift_zone = "PM").filter(is_settled = True)
+        context['absence_changed_list_BOTH'] = Absence.objects.filter(date = _date).filter(shift_zone = "BOTH").filter(is_settled = True)
+        context['alternative_changed_list_AM'] = Alternative.objects.filter(date = _date).filter(shift_zone = "AM").filter(is_settled = True)
+        context['alternative_changed_list_PM'] = Alternative.objects.filter(date = _date).filter(shift_zone = "PM").filter(is_settled = True)
+        context['alternative_changed_list_BOTH'] = Alternative.objects.filter(date = _date).filter(shift_zone = "BOTH").filter(is_settled = True)
+        context['absence_not_changed_list_AM'] = Absence.objects.filter(date=_date).filter(shift_zone = "AM").filter(is_settled = False)
+        context['absence_not_changed_list_PM'] = Absence.objects.filter(date=_date).filter(shift_zone = "PM").filter(is_settled = False)
+        context['absence_not_changed_list_BOTH'] = Absence.objects.filter(date=_date).filter(shift_zone = "BOTH").filter(is_settled = False)
+        context['alternative_not_changed_list_AM'] = Alternative.objects.filter(date=_date).filter(shift_zone = "AM").filter(is_settled = False)
+        context['alternative_not_changed_list_PM'] = Alternative.objects.filter(date=_date).filter(shift_zone = "PM").filter(is_settled = False)
+        context['alternative_not_changed_list_BOTH'] = Alternative.objects.filter(date=_date).filter(shift_zone = "BOTH").filter(is_settled = False)
 
         return context
 
