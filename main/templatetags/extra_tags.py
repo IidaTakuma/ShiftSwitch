@@ -12,8 +12,8 @@ def count_deficiency(day):
 
     _date = str(year)+"-"+str(month)+"-"+str(day)
 
-    is_absence = Absence.objects.filter(date=_date).filter(is_settled=False).count()
-    is_alternative = Alternative.objects.filter(date=_date).filter(is_settled=False).count()
+    is_absence = Absence.objects.filter(date=_date).count()
+    is_alternative = Alternative.objects.filter(date=_date).count()
     deficiency = is_alternative - is_absence
 
     return deficiency

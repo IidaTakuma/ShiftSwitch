@@ -15,8 +15,8 @@ class DailyView(LoginRequiredMixin,TemplateView):
         set_dateData_to_context(self, context)
         _date = get_date(self)
         #過不足を渡す部分[開始]
-        is_absence = Absence.objects.filter(date=_date,is_settled=False).count()
-        is_alternative = Alternative.objects.filter(date=_date,is_settled=False).count()
+        is_absence = Absence.objects.filter(date=_date).count()
+        is_alternative = Alternative.objects.filter(date=_date).count()
         context["deficiency"] = is_alternative - is_absence
         #過不足を渡す部分[終了]
 
@@ -26,7 +26,7 @@ class DailyView(LoginRequiredMixin,TemplateView):
         context['ownAbsence'] = Absence.objects.filter(date = _date, Absence_user = _user)
         context['ownAlternative'] = Alternative.objects.filter(date = _date, Alternative_user = _user)
 
-        context['ownAbsenceChange'] = Absence.objects.filter(date = _date, Alternative_user = _user.id)
-        context['ownAlternativeChange'] = Alternative.objects.filter(date = _date, Absence_user = _user.id)
+        # context['ownAbsenceChange'] = Absence.objects.filter(date = _date, Alternative_user = _user.id)
+        # context['ownAlternativeChange'] = Alternative.objects.filter(date = _date, Absence_user = _user.id)
 
         return context
