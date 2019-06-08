@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+    <h5 class="container text-left mx-0 my-3">
+        <span>プロフィール編集</span>
+    </h5>
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+        <div class='form-group'>
+            <label class="text-left control-label">メンター名</label>
+            <div>{{form.username|add_class:"form-control"}}</div>
+        </div>
+        <div class='form-group'>
+            <label class="text-left control-label">土曜固定</label>
+            <div>{{form.shift_Sat|add_class:"form-control"}}</div>
+        </div>
+        <div class='form-group'>
+            <label class="text-left control-label">日曜固定</label>
+            <div>{{form.shift_Sun|add_class:"form-control"}}</div>
+        </div>
+        <div class='form-group'>
+            <label class="text-left control-label">ボード</label>
+            <div>{{form.is_board|add_class:"form-control"}}</div>
+        </div>
+        <div class='form-group text-center'>
+            <button type="submit" class="btn btn-primary rounded-pill my-3">登録</button>
+        </div>
+    </form>
+{% endblock %}

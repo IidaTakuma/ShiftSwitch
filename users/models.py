@@ -57,6 +57,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     """
     username = models.CharField(max_length=30, verbose_name='メンター名', blank=True)
     email = models.EmailField(_('email address'),unique=True,)
+
+    shift_Sat = models.CharField(max_length=15)
+    shift_Sun = models.CharField(max_length=15)
+    is_board = models.BooleanField(default=False)
+
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,

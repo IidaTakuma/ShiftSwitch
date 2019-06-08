@@ -2,5 +2,7 @@
 {% block content %}
     <p>マイページ</p>
     <p>メンター名：{{user.username}}</p>
-    <p>固定シフト：</p>
+    <p>固定シフト【土曜】：{{user.shift_Sat}}</p>
+    <p>固定シフト【日曜】：{{user.shift_Sun}}</p>
+    <a href="{% url 'main:mypageEdit' user.id %}">プロフィール編集</a>
 {% endblock %}

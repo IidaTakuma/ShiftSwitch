@@ -1,5 +1,5 @@
 from django import template
-from main.models import Absence, Alternative, Profile
+from main.models import Absence, Alternative
 
 register = template.Library()
 
