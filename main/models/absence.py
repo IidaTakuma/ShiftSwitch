@@ -2,7 +2,7 @@ from django.db import models
 from users.models import User
 
 class Absence(models.Model):
-    Absence_user = models.ForeignKey(User, verbose_name="休む人", on_delete=models.CASCADE)
+    Absence_user = models.ForeignKey(User, verbose_name="欠席したい人", on_delete=models.CASCADE)
     date = models.DateField()
     shift_zone = models.CharField(max_length=15)
     comment = models.TextField(max_length=200, default="なし")
