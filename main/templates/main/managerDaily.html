@@ -13,86 +13,25 @@
             <span>{{month}}月{{day}}日{{week}}</span>
             <span class="ml-3">({{deficiency}})</span>
         </h5>
-        {% comment %}交代確定(ここから){% endcomment %}
-        <div class="card my-3">
-          <div class="card-header">交代が決まった</div>
-            <div class="card-body">
-                    <div class="list-group-item">
-                        {% if absence_changed_list_AM or absence_changed_list_PM or absence_changed_list_BOTH or alternative_changed_list_AM or alternative_changed_list_PM or alternative_changed_list_BOTH %}
-                            <div class="row align-items-center">【 AM 】</div>
-                            {% for absence in absence_changed_list_AM %}
-                                <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{absence.Absence_user.username}}</span>
-                                    <span class="col-2 text-center">→</span>
-                                    <span class="col-5 text-right">{{absence.get_mentor_name_from_id}}</span>
-                                </div>
-                            {% endfor %}
-                            {% for alternative in alternative_changed_list_AM %}
-                                <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{alternative.Alternative_user.username}}</span>
-                                    <span class="col-2 text-center">→</span>
-                                    <span class="col-5 text-right">{{alternative.get_mentor_name_from_id}}</span>
-                                </div>
-                            {% endfor %}
-                            <div class="row align-items-center">【 PM 】</div>
-                            {% for absence in absence_changed_list_PM %}
-                                <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{absence.Absence_user.username}}</span>
-                                    <span class="col-2 text-center">→</span>
-                                    <span class="col-5 text-right">{{absence.get_mentor_name_from_id}}</span>
-                                </div>
-                            {% endfor %}
-                            {% for alternative in alternative_changed_list_PM %}
-                                <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{alternative.Alternative_user.username}}</span>
-                                    <span class="col-2 text-center">→</span>
-                                    <span class="col-5 text-right">{{alternative.get_mentor_name_from_id}}</span>
-                                </div>
-                            {% endfor %}
-                            <div class="row align-items-center">【 全日 】</div>
-                            {% for absence in absence_changed_list_BOTH %}
-                                <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{absence.Absence_user.username}}</span>
-                                    <span class="col-2 text-center">→</span>
-                                    <span class="col-5 text-right">{{absence.get_mentor_name_from_id}}</span>
-                                </div>
-                            {% endfor %}
-                            {% for alternative in alternative_changed_list_BOTH %}
-                                <div class="row align-items-center">
-                                    <span class="col-5 text-left">{{alternative.Alternative_user.username}}</span>
-                                    <span class="col-2 text-center">→</span>
-                                    <span class="col-5 text-right">{{alternative.get_mentor_name_from_id}}</span>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <div class="row align-items-center">
-                                <span>なし</span>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% comment %}交代確定(ここまで){% endcomment %}
-        
+
         {% comment %}欠席希望(ここから){% endcomment %}
         <div class="card my-3">
           <div class="card-header">欠席したい</div>
             <div class="card-body">
                     <div class="list-group-item">
-                        {% if absence_not_changed_list_AM or absence_not_changed_list_PM or absence_not_changed_list_BOTH %}
+                        {% if absenceList_AM or absenceList_PM or absenceList_BOTH %}
                             <div class="row align-items-center"><span>【全日】</span>
-                                {% for absence in absence_not_changed_list_BOTH %}
+                                {% for absence in absenceList_BOTH %}
                                         <span>{{absence.Absence_user.username}}</span>
                                 {% endfor %}
                             </div>
                             <div class="row align-items-center"><span>【 AM 】</span>
-                                {% for absence in absence_not_changed_list_AM %}
+                                {% for absence in absenceList_AM %}
                                     <span>{{absence.Absence_user.username}}</span>
                                 {% endfor %}
                             </div>
                             <div class="row align-items-center"><span>【 PM 】</span>
-                                {% for absence in absence_not_changed_list_PM %}
+                                {% for absence in absenceList_PM %}
                                     <span>{{absence.Absence_user.username}}</span>
                                 {% endfor %}
                             </div>
@@ -112,19 +51,19 @@
           <div class="card-header">出勤したい</div>
             <div class="card-body">
                     <div class="list-group-item">
-                            {% if alternative_not_changed_list_BOTH or alternative_not_changed_list_AM or alternative_not_changed_list_PM %}
+                            {% if alternativeList_BOTH or alternativeList_AM or alternativeList_PM %}
                                 <div class="row align-items-center"><span>【全日】</span>
-                                    {% for alternative in alternative_not_changed_list_BOTH %}
+                                    {% for alternative in alternativeList_BOTH %}
                                         <span>{{alternative.Alternative_user.username}}</span>
                                     {% endfor %}
                                 </div>
                                 <div class="row align-items-center"><span>【 AM 】</span>
-                                    {% for alternative in alternative_not_changed_list_AM %}
+                                    {% for alternative in alternativeList_AM %}
                                         <span>{{alternative.Alternative_user.username}}</span>
                                     {% endfor %}
                                 </div>
                                 <div class="row align-items-center"><span>【 PM 】</span>
-                                    {% for alternative in alternative_not_changed_list_PM %}
+                                    {% for alternative in alternativeList_PM %}
                                         <span>{{alternative.Alternative_user.username}}</span>
                                     {% endfor %}
                                 </div>

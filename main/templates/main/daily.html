@@ -13,16 +13,9 @@
         <a href="#alternative" class="nav-link" data-toggle="tab">出勤申請一覧</a>
     </li>
     </ul>
-{% comment %} 代わって欲しいリスト[開始] {% endcomment %}
+{% comment %} 欠席申請一覧[開始] {% endcomment %}
     <div class="tab-content">
         <div id="absence" class="tab-pane list-group active">
-            {% comment %} {% if ownAbsenceChange or ownAlternativeChange %}
-                <div class="list-group-item">
-                    <div class="row align-items-center">
-                        <span class="col-12">この日は既に交代しています！</span>
-                    </div>
-                </div>
-            {% else %} {% endcomment %}
             {% if ownAbsence %}
                 <div class="list-group-item">
                     <div class="row align-items-center text-center">
@@ -47,67 +40,29 @@
                     </a>
                 </div>
             {% endif %}
-            {% comment %} {% endif %} {% endcomment %}
-            {% if ownAbsence or ownAlternativeChange %}
-                {% for absence in absence_list %}
-                    <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-4 p-0">{{absence.Absence_user.username}}</span>
-                            {% if absence.shift_zone_judge_AM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% if absence.shift_zone_judge_PM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% comment %} {% if absence.is_settled %}
-                                <span class="col-4 p-0 overflow-hidden text-center"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
-                            {% endif %} {% endcomment %}
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-                {% for absence in absence_list %}
-                    <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-4 p-0">{{absence.Absence_user.username}}</span>
-                            {% if absence.shift_zone_judge_AM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% if absence.shift_zone_judge_PM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% comment %} {% if absence.is_settled %}
-                                <span class="col-4 p-0 overflow-hidden text-center"><button type="button" class="btn btn-success shadow-sm" > 解決済！</button></span>
-                            {% else %}    
-                                <span class="col-4 p-0 overflow-hidden text-center"><form action="{% url 'main:absenceChange' absence.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
-                                    {% csrf_token %}
-                                    <input type="submit" class="btn btn-warning shdbtn" value="代わる！">
-                                </form></span>
-                            {% endif %} {% endcomment %}
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        </div>
-    {% comment %} 代わって欲しいリスト[終了] {% endcomment %}
-
-    {% comment %} 代わってあげるリスト[開始] {% endcomment %}
-        <div id="alternative" class="tab-pane list-group">
-            {% comment %} {% if ownAbsenceChange or ownAlternativeChange %}
+            {% for absence in absence_list %}
                 <div class="list-group-item">
                     <div class="row align-items-center">
-                        <span class="col-8">この日は既に交代しています！</span>
+                        <span class="col-4 p-0">{{absence.Absence_user.username}}</span>
+                        {% if absence.shift_zone_judge_AM %}
+                            <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                        {% else %}
+                            <span class="col-2 p-0 overflow-hidden text-center">--</span>
+                        {% endif %}
+                        {% if absence.shift_zone_judge_PM %}
+                            <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                        {% else %}
+                            <span class="col-2 p-0 overflow-hidden text-center">--</span>
+                        {% endif %}
+                        <span class="col-4 p-0 overflow-hidden text-center">理由：{{absence.comment}}</span>
                     </div>
                 </div>
-            {% else %} {% endcomment %}
+            {% endfor %}
+        </div>
+    {% comment %} 欠席申請一覧[終了] {% endcomment %}
+
+    {% comment %} 出席申請一覧[開始] {% endcomment %}
+        <div id="alternative" class="tab-pane list-group">
             {% if ownAlternative %}
                 <div class="list-group-item">
                     <div class="row align-items-center text-center">
@@ -133,56 +88,26 @@
                 </div>
             {% endif %}
             {% comment %} {% endif %} {% endcomment %}
-            {% if ownAlternative or ownAbsenceChange %}
-                {% for alternative in alternative_list %}
-                    <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-4 p-0">{{alternative.Alternative_user.username}}</span>
-                            {% if alternative.shift_zone_judge_AM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% if alternative.shift_zone_judge_PM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% comment %} {% if alternative.is_settled %}
-                                <span class="col-4 p-0 overflow-hidden text-center"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
-                            {% endif %} {% endcomment %}
-                        </div>
+            {% for alternative in alternative_list %}
+                <div class="list-group-item">
+                    <div class="row align-items-center">
+                        <span class="col-4 p-0">{{alternative.Alternative_user.username}}</span>
+                        {% if alternative.shift_zone_judge_AM %}
+                            <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
+                        {% else %}
+                            <span class="col-2 p-0 overflow-hidden text-center">--</span>
+                        {% endif %}
+                        {% if alternative.shift_zone_judge_PM %}
+                            <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
+                        {% else %}
+                            <span class="col-2 p-0 overflow-hidden text-center">--</span>
+                        {% endif %}
+                        <span class="col-4 p-0 overflow-hidden text-center">理由：{{absence.comment}}</span>
                     </div>
-                {% endfor %}
-            {% else %}
-                {% for alternative in alternative_list %}
-                    <div class="list-group-item">
-                        <div class="row align-items-center">
-                            <span class="col-4 p-0">{{alternative.Alternative_user.username}}</span>
-                            {% if alternative.shift_zone_judge_AM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-primary btn-sm rounded-pill shadow-sm">AM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% if alternative.shift_zone_judge_PM %}
-                                <span class="col-2 p-0 overflow-hidden text-center"><button type="button" class="btn btn-danger btn-sm rounded-pill shadow-sm">PM</button></span>
-                            {% else %}
-                                <span class="col-2 p-0 overflow-hidden text-center">--</span>
-                            {% endif %}
-                            {% comment %} {% if alternative.is_settled %}
-                                <span class="col-4 p-0 overflow-hidden text-center"><button type="button" class="btn btn-success shadow-sm">解決済！</button></span>
-                            {% else %}
-                                <span class="col-4 p-0 overflow-hidden text-center"><form action="{% url 'main:alternativeChange' alternative.id %}?y={{year}}&m={{month}}&d={{day}}&w={{week}}" method="post">
-                                    {% csrf_token %}
-                                <input type="submit" class="btn btn-warning shadow-sm" value="代わる！">
-                                </span></form>
-                            {% endif %} {% endcomment %}
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
+                </div>
+            {% endfor %}
         </div>
-        {% comment %} 代わってあげるリスト[終了] {% endcomment %}
+        {% comment %} 出席申請一覧[終了] {% endcomment %}
     </div>
 {% endblock %}
 
