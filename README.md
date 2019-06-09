@@ -24,9 +24,8 @@ $ git clone https://github.com/IidaTakuma/ShiftSwitch.git
 $ cd ShiftSwitch
 $ pipenv install
 $ pipenv install django-widgets-improved
-$ pipenv shell
-$ python manage.py makemigrations
-$ python manage.py migrate
+$ pipenv run python manage.py makemigrations
+$ pipenv run python manage.py migrate
 ```
 
 
@@ -34,13 +33,13 @@ $ python manage.py migrate
 #### 実行
 
 ```shell
-$ python manage.py runserver
+$ pipenv run python manage.py runserver
 ```
 
 #### ユーザー作成(管理者)
 
 ```shell
-$ python manage.py createsuperuser
+$ pipenv run python manage.py createsuperuser
 ```
 
 
