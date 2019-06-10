@@ -11,22 +11,30 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dotenv
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+env_file = os.path.join(BASE_DIR, '.env')
+if os.path.exists(env_file):
+    dotenv.load_dotenv(env_file)
+else:
+    logger.warn(".env file cannot find")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wxfc(fgj4t$y236poqtt!!liz#ch@!#xtt3w8%pq+8zpqz1a%-'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv("SHIFT_SWITCH_DEBUG", 'False').lower() == 'true'
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -73,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ShiftSwitch.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
@@ -83,7 +90,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -103,7 +109,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
@@ -117,7 +122,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
@@ -127,7 +131,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_URL = 'users/login'
@@ -135,21 +138,16 @@ LOGIN_URL = 'users/login'
 LOGOUT_REDIRECT_URL = '/users/login'
 LOGIN_REDIRECT_URL = '/'
 
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "True").lower() == "true"
 # メールを実際に送らず、コンソール画面へ表示する
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
- 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'shiftswitchad'
-EMAIL_HOST_PASSWORD = 'lvbrlzzzkwgilapo'
-EMAIL_USE_TLS = True
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 if not DEBUG:
     import django_heroku
+
     django_heroku.settings(locals())
