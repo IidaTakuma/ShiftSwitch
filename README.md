@@ -22,12 +22,13 @@ pipenv
 ```shell
 $ git clone https://github.com/IidaTakuma/ShiftSwitch.git
 $ cd ShiftSwitch
+$ cp .env.sample .env
+# 必要な情報を.envに入力
 $ pipenv install
 $ pipenv install django-widgets-improved
 $ pipenv run python manage.py makemigrations
 $ pipenv run python manage.py migrate
 ```
-
 
 
 #### 実行
